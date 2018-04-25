@@ -25,6 +25,7 @@ public class TreeController {
 		JSONObject jsonObject2 =new JSONObject();
 		JSONObject jsonObject3 =new JSONObject();
 		JSONObject jsonObject3_1 =new JSONObject();
+		JSONObject jsonObject3_2 =new JSONObject();
 		try {
 			jsonObject.put("id", "1");
 			jsonObject.put("url", "depart");
@@ -41,10 +42,16 @@ public class TreeController {
 			jsonObject3.put("id", "4");
 			jsonObject3.put("text", "系统设置");
 			
-			jsonObject3_1.put("id", "5");
+			jsonObject3_2.put("id", "5");
+			jsonObject3_2.put("url", "changePassword");
+			jsonObject3_2.put("pid", "4");
+			jsonObject3_2.put("text", "修改密码");
+			
+			jsonObject3_1.put("id", "6");
 			jsonObject3_1.put("url", "logout");
 			jsonObject3_1.put("pid", "4");
 			jsonObject3_1.put("text", "退出系统");
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -53,6 +60,7 @@ public class TreeController {
 		jsonArray.put(jsonObject1);
 		jsonArray.put(jsonObject2);
 		jsonArray.put(jsonObject3);
+		jsonArray.put(jsonObject3_2);
 		jsonArray.put(jsonObject3_1);
 		
 		String data=jsonArray.toString();

@@ -35,6 +35,12 @@ public  abstract class BaseDao implements IEntityDao {
 		String updateStatement = this.getNameSpace()+".update";
 		sqlSessionTemplate.update(updateStatement, paramsPK);
 	}
+	
+	@Override
+	public void updateBySql(String sql, Object params) {
+		String updateStatement = this.getNameSpace()+"."+sql;
+		sqlSessionTemplate.update(updateStatement, params);
+	}
 
 	@Override
 	public Object findById(int id) {

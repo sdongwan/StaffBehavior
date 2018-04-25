@@ -34,5 +34,10 @@
 		select * from t_sys_user
 			where account = #{account,jdbcType=VARCHAR}
 	</select>
+	
+	<update id="updateByAccountAndPasswd" parameterType="hashmap">
+		update t_sys_user set password = #{newpassword,jdbcType=VARCHAR} 
+			where account = #{account,jdbcType=VARCHAR} 
+	</update>
 
 </mapper>

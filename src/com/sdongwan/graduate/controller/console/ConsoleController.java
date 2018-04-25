@@ -44,5 +44,16 @@ public class ConsoleController {
 		return new ModelAndView("/console/adminResearch");
 	}
 	
+	/**
+	 * 转页部门管理界面
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping({ "changePassword" })
+	public ModelAndView changePassword(HttpServletRequest request) {
+		return new ModelAndView("/console/consoleChangePassword");
+	}
+	
+	
 	
 }

@@ -11,4 +11,5 @@ public interface IEntityDao {
 	public void update(Object entity,Object paramsPK);
 	public Object findById(int id);
 	public Object findBySql(String sql,String params);
+	void updateBySql(String sql, Object params);
 }

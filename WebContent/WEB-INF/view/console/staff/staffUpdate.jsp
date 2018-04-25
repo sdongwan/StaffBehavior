@@ -6,7 +6,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>员工行为分析系统</title>
 		<%@include file="/commons/include/system.jsp"%>
-		<script src="${ctx}/assets/miniui/boot.js" type="text/javascript"></script>
 		<style type="text/css">
 			body{
 			    	width:100%;
