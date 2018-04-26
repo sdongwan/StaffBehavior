@@ -5,5 +5,31 @@
 	<resultMap id="BaseResultMap" type="com.sdongwan.graduate.model.Depart"
 		autoMapping="true">
 	</resultMap>
-
+	
+	<select id="getAll" resultMap="BaseResultMap">
+		select * from t_depart	
+	</select>
+	
+	<select id="findById" parameterType="int" resultMap="BaseResultMap">
+		select * from t_depart 
+			where depart_id = #{departId,jdbcType=INTEGER}	
+	</select>
+	
+	<insert id="add" parameterType="com.sdongwan.graduate.model.Depart">
+		insert into t_depart
+			(
+				company_id,
+				depart_name,
+				staff_num,
+				create_time
+			) 
+			values 
+			(
+				#{companyId,jdbcType=INTEGER},
+				#{departName,jdbcType=VARCHAR},
+				#{staffNum,jdbcType=INTEGER},
+				now()
+			)
+	</insert>
+	
 </mapper>

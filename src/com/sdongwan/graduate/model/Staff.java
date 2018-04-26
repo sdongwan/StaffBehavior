@@ -15,6 +15,13 @@ public class Staff {
 	private int jobId;
 	private int workYear;
 	private String enterTime;
+	private String gender;
+	private String salary;
+	private int age;
+	private String education;
+	private String graduateSchool;
+	private String married;
+	private String birthday;
 	
 	/**
 	 * 员工编号
@@ -124,5 +131,89 @@ public class Staff {
 		this.enterTime = enterTime;
 	}
 	
+	/**
+	 * 年龄
+	 * @return
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	/**
+	 * 工资
+	 * @return
+	 */
+	public String getSalary() {
+		return salary;
+	}
+
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+
+	/**
+	 * 年龄
+	 * @return
+	 */
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	/**
+	 * 学历
+	 * @return
+	 */
+	public String getEducation() {
+		return education;
+	}
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+	
+	/**
+	 * 毕业院校
+	 * @return
+	 */
+	public String getGraduateSchool() {
+		return graduateSchool;
+	}
+
+	public void setGraduateSchool(String graduateSchool) {
+		this.graduateSchool = graduateSchool;
+	}
+
+	/**
+	 * 婚姻
+	 * @return
+	 */
+	public String getMarried() {
+		return married;
+	}
+
+	public void setMarried(String married) {
+		this.married = married;
+	}
+
+	/**
+	 * 出生日期
+	 * @return
+	 */
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
 	
 }

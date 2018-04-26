@@ -36,4 +36,9 @@ public abstract class BaseService {
 	public Object findBySql(String sql , String params) {
 		return getIEntityDao().findBySql(sql, params);
 	}
+	
+	public Object getAll() {
+		return getIEntityDao().getAll();
+	}
+	
 }

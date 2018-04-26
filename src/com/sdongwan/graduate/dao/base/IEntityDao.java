@@ -1,4 +1,7 @@
 package com.sdongwan.graduate.dao.base;
+
+import java.util.List;
+
 /**
  * 
  * 
@@ -6,10 +9,11 @@ package com.sdongwan.graduate.dao.base;
  * @date        2018年4月21日 下午1:32:03
  */
 public interface IEntityDao {
-	public void insert(Object entity);
-	public void delById(int id);
-	public void update(Object entity,Object paramsPK);
-	public Object findById(int id);
-	public Object findBySql(String sql,String params);
-	void updateBySql(String sql, Object params);
+	 void insert(Object entity);
+	 void delById(int id);
+	 void update(Object entity,Object paramsPK);
+	 Object findById(int id);
+	 Object findBySql(String sql,String params);
+	 void updateBySql(String sql, Object params);
+	 List<Object> getAll();
 }

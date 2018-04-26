@@ -6,4 +6,27 @@
 		autoMapping="true">
 	</resultMap>
 
+	<select id="getAll" resultMap="BaseResultMap">
+		select * from t_job	
+	</select>
+	
+	<select id="findById" parameterType="int" resultMap="BaseResultMap">
+		select * from t_job 
+			where job_id = #{jobId,jdbcType=INTEGER}	
+	</select>
+	
+	<insert id="add" parameterType="com.sdongwan.graduate.model.Job">
+		insert into t_job
+			(
+				job_name,
+				depart_id,
+				create_time
+			) 
+			values 
+			(
+				#{jobName,jdbcType=VARCHAR},
+				#{departId,jdbcType=INTEGER},
+				now()
+			)
+	</insert>
 </mapper>

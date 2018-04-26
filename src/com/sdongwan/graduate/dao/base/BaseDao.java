@@ -1,6 +1,9 @@
 package com.sdongwan.graduate.dao.base;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
+
 
 /**
  * 
@@ -54,6 +57,11 @@ public  abstract class BaseDao implements IEntityDao {
 		return sqlSessionTemplate.selectOne(findStatement, params);
 	};
 	
+	@Override
+	public List<Object> getAll () {
+		String getAll = this.getNameSpace()+".getAll";
+		return sqlSessionTemplate.selectList(getAll);
+	}
 	
 
 }

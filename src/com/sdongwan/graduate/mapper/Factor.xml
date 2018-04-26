@@ -6,4 +6,29 @@
 		autoMapping="true">
 	</resultMap>
 
+	<select id="getAll" resultMap="BaseResultMap">
+		select * from t_factor	
+	</select>
+	
+	<select id="findById" parameterType="int" resultMap="BaseResultMap">
+		select * from t_factor 
+			where factor_id = #{factorId,jdbcType=INTEGER}	
+	</select>
+	
+	<insert id="add" parameterType="com.sdongwan.graduate.model.Factor">
+		insert into t_factor
+			(
+				factor_name,
+				company_id,
+				depart_id,
+				create_time
+			) 
+			values 
+			(
+				#{factorName,jdbcType=VARCHAR},
+				#{companyId,jdbcType=INTEGER},
+				#{departId,jdbcType=INTEGER},
+				now()
+			)
+	</insert>
 </mapper>

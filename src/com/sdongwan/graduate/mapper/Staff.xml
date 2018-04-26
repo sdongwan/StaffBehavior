@@ -16,7 +16,14 @@
 				work_year,
 				enter_time,
 				password,
-				account
+				account,
+				gender,
+				salary,
+				age,
+				education,
+				graduate_school,
+				married,
+				birthday
 			) 
 			values 
 			(
@@ -27,7 +34,14 @@
 				#{workYear,jdbcType=INTEGER},
 				#{enterTime,jdbcType=VARCHAR},
 				#{password,jdbcType=VARCHAR},
-				#{account,jdbcType=VARCHAR}
+				#{account,jdbcType=VARCHAR},
+				#{gender,jdbcType=VARCHAR},
+				#{salary,jdbcType=VARCHAR},
+				#{age,jdbcType=INTEGER},
+				#{education,jdbcType=VARCHAR},
+				#{graduateSchool,jdbcType=VARCHAR},
+				#{married,jdbcType=VARCHAR},
+				#{birthday,jdbcType=VARCHAR}
 			)
 	</insert>
 	
@@ -37,7 +51,8 @@
 	</select>
 
 	<select id = "findByAccount" parameterType="String" resultMap="BaseResultMap" >
-		select * from t_staff
+		select account,password from t_staff
 			where account = #{account,jdbcType=VARCHAR}
 	</select>
+	
 </mapper>

@@ -23,7 +23,7 @@
 	                    <label for="account">请输入账号：</label>
 	                </td>
 	                <td>
-	                    <input name="account" errorMode="none"  class="mini-password" required="true" requiredErrorText="密码不能为空"/>                    
+	                    <input name="account" errorMode="none"  class="mini-password" required="true" requiredErrorText="请输入账号" onvalidation="onNoEmptyValidation" />                    
 	                </td>    
 	                <td id="account_error" class="errorText"></td>
 	            </tr>
@@ -32,7 +32,7 @@
 	                    <label for="password">请输入密码：</label>
 	                </td>
 	                <td>
-	                    <input name="password" errorMode="none"  class="mini-password" required="true" requiredErrorText="密码不能为空"/>                    
+	                    <input name="password" errorMode="none"  class="mini-password" required="true" requiredErrorText="请输入密码" onvalidation="onNoEmptyValidation" />                    
 	                </td>    
 	                <td id="password_error" class="errorText"></td>
 	            </tr>
@@ -41,13 +41,13 @@
 	                    <label for="newpassword">请输入新密码：</label>
 	                </td>
 	                <td>
-	                    <input name="newpassword" errorMode="none"  class="mini-password" required="true" requiredErrorText="密码不能为空"/>                    
+	                    <input name="newpassword" errorMode="none"  class="mini-password" required="true" requiredErrorText="请输入新的密码" onvalidation="onNoEmptyValidation" />                    
 	                </td>    
 	                <td id="newpassword_error" class="errorText"></td>
 	            </tr> 
 	            <tr>
 	            	<td>
-		            	<div  class="mini-button" onclick="changePasswd">确定</div>
+		            	<div class="mini-button" onclick="changePasswd">确定</div>
 		            </td>
 	            </tr>           
 	        </table>
@@ -71,6 +71,18 @@
 	            		mini.alert("密码修改失败");
 	            	}
 	            })
+			}
+			
+			function updateError(e) {
+	            var id = e.sender.name + "_error";
+	            var el = document.getElementById(id);
+	            if (el) {
+	                el.innerHTML = e.errorText;
+	            }
+	        }
+			
+			function onNoEmptyValidation (e) {
+				updateError(e);
 			}
 		</script>
 	</body>
