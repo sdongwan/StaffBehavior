@@ -10,6 +10,8 @@ public class Job {
 	private String jobName;
 	private int departId;
 	private String createTime;
+	private String updateTime;
+	private String remark;
 	
 	/**
 	 * 职位编号
@@ -57,5 +59,21 @@ public class Job {
 	
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }

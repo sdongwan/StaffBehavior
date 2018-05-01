@@ -12,6 +12,7 @@ public class SysUser {
 	private int companyId;
 	private int jobId;
 	private String createTime;
+	private String updateTime;
 	
 
 	public int getSysUserId() {
@@ -64,5 +65,13 @@ public class SysUser {
 	
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
 	}
 }

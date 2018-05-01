@@ -7,10 +7,25 @@ package com.sdongwan.graduate.model;
  */
 public class Depart {
 	private int departId;
-	private String postName;
+	private String departName;
 	private int companyId;
 	private int staffNum;
 	private String createTime;
+	private String updateTime;
+	private String remark;
+	
+	/**
+	 * 修改日期
+	 * @return
+	 */
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+	
 	
 	/**
 	 * 部门编号
@@ -28,12 +43,12 @@ public class Depart {
 	 * 部门名称
 	 * @return
 	 */
-	public String getPostName() {
-		return postName;
+	public String getDepartName() {
+		return departName;
 	}
-	
-	public void setPostName(String postName) {
-		this.postName = postName;
+
+	public void setDepartName(String departName) {
+		this.departName = departName;
 	}
 	
 	/**
@@ -70,5 +85,13 @@ public class Depart {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 }

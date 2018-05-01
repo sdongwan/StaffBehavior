@@ -9,8 +9,9 @@ package com.sdongwan.graduate.model;
 public class Factor {
 	private int factorId;
 	private String factorName;
-	private int companyId;
-	private int departId;
+	private String remark;
+	private String createTime;
+	private String updateTime;
 
 	/**
 	 * 因素编号
@@ -39,28 +40,31 @@ public class Factor {
 	}
 
 	/**
-	 * 公司编号
-	 * 
+	 * 备注
 	 * @return
 	 */
-	public int getCompanyId() {
-		return companyId;
+	public String getRemark() {
+		return remark;
 	}
 
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
-	/**
-	 * 岗位编号
-	 * 
-	 * @return
-	 */
-	public int getDepartId() {
-		return departId;
+	public String getCreateTime() {
+		return createTime;
 	}
 
-	public void setDepartId(int departId) {
-		this.departId = departId;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
 }

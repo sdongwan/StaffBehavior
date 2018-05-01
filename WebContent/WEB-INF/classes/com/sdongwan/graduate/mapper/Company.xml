@@ -23,14 +23,14 @@
 			)
 	</insert>
 	
-	<select id="findById" parameterType="int">
+	<select id="findById" parameterType="int" resultMap="BaseResultMap">
 		select * from t_company 
 			where company_id = #{companyId,jdbcType=INTEGER}	
 	</select>
 	
-	<select id="getAll" 
-		select * from t_company 
-			where company_id = #{companyId,jdbcType=INTEGER}	
+	<select id="getAll" resultMap="BaseResultMap">
+		select * from t_company 	
 	</select>
+	
 	
 </mapper>

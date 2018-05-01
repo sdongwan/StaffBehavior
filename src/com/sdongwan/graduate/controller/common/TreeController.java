@@ -24,6 +24,7 @@ public class TreeController {
 		JSONObject jsonObject1 =new JSONObject();
 		JSONObject jsonObject2 =new JSONObject();
 		JSONObject jsonObject3 =new JSONObject();
+		JSONObject jsonObject4 =new JSONObject();
 		JSONObject jsonObject3_1 =new JSONObject();
 		JSONObject jsonObject3_2 =new JSONObject();
 		try {
@@ -39,17 +40,21 @@ public class TreeController {
 			jsonObject2.put("url", "research");
 			jsonObject2.put("text", "调查统计");
 			
-			jsonObject3.put("id", "4");
-			jsonObject3.put("text", "系统设置");
+			jsonObject4.put("id", "4");
+			jsonObject4.put("url", "job");
+			jsonObject4.put("text", "职位管理");
 			
-			jsonObject3_2.put("id", "5");
+			jsonObject3.put("text", "系统设置");
+			jsonObject3.put("id", "5");
+			
+			jsonObject3_2.put("id", "6");
 			jsonObject3_2.put("url", "changePassword");
-			jsonObject3_2.put("pid", "4");
+			jsonObject3_2.put("pid", "5");
 			jsonObject3_2.put("text", "修改密码");
 			
-			jsonObject3_1.put("id", "6");
+			jsonObject3_1.put("id", "7");
 			jsonObject3_1.put("url", "logout");
-			jsonObject3_1.put("pid", "4");
+			jsonObject3_1.put("pid", "5");
 			jsonObject3_1.put("text", "退出系统");
 			
 		} catch (JSONException e) {
@@ -59,6 +64,7 @@ public class TreeController {
 		jsonArray.put(jsonObject);
 		jsonArray.put(jsonObject1);
 		jsonArray.put(jsonObject2);
+		jsonArray.put(jsonObject4);
 		jsonArray.put(jsonObject3);
 		jsonArray.put(jsonObject3_2);
 		jsonArray.put(jsonObject3_1);
@@ -75,8 +81,6 @@ public class TreeController {
 		JSONObject jsonObject =new JSONObject();
 		JSONObject jsonObject1 =new JSONObject();
 		JSONObject jsonObject2 =new JSONObject();
-		JSONObject jsonObject3 =new JSONObject();
-		
 		try {
 			
 			jsonObject.put("id", "0");
@@ -92,11 +96,6 @@ public class TreeController {
 			jsonObject2.put("pid", "0");
 			jsonObject2.put("text", "添加员工");
 			
-			jsonObject3.put("id", "3");
-			jsonObject3.put("url", "update");
-			jsonObject3.put("text", "修改员工信息");
-			jsonObject3.put("pid", "0");
-			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -104,7 +103,6 @@ public class TreeController {
 		jsonArray.put(jsonObject);
 		jsonArray.put(jsonObject1);
 		jsonArray.put(jsonObject2);
-		jsonArray.put(jsonObject3);
 		
 		String data=jsonArray.toString();
 		System.out.println("data: "+data);
@@ -118,8 +116,6 @@ public class TreeController {
 		JSONObject jsonObject =new JSONObject();
 		JSONObject jsonObject1 =new JSONObject();
 		JSONObject jsonObject2 =new JSONObject();
-		JSONObject jsonObject3 =new JSONObject();
-		
 		try {
 			
 			jsonObject.put("id", "0");
@@ -135,10 +131,85 @@ public class TreeController {
 			jsonObject2.put("pid", "0");
 			jsonObject2.put("text", "添加部门");
 			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		jsonArray.put(jsonObject);
+		jsonArray.put(jsonObject1);
+		jsonArray.put(jsonObject2);
+		
+		String data=jsonArray.toString();
+		return data;
+	}
+	
+	@RequestMapping( value = {"jobTree"} ,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Object jobTree (HttpServletRequest request) {
+		org.json.JSONArray jsonArray =new org.json.JSONArray();
+		JSONObject jsonObject =new JSONObject();
+		JSONObject jsonObject1 =new JSONObject();
+		JSONObject jsonObject2 =new JSONObject();
+		try {
+			
+			jsonObject.put("id", "0");
+			jsonObject.put("text", "职位管理");
+			
+			jsonObject1.put("id", "1");
+			jsonObject1.put("url", "list");
+			jsonObject1.put("pid", "0");
+			jsonObject1.put("text", "职位列表");
+			
+			jsonObject2.put("id", "2");
+			jsonObject2.put("url", "add");
+			jsonObject2.put("pid", "0");
+			jsonObject2.put("text", "添加职位");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		jsonArray.put(jsonObject);
+		jsonArray.put(jsonObject1);
+		jsonArray.put(jsonObject2);
+		
+		String data=jsonArray.toString();
+		return data;
+	}
+	
+	@RequestMapping( value = {"factorTree"} ,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Object factorTree (HttpServletRequest request) {
+		org.json.JSONArray jsonArray =new org.json.JSONArray();
+		JSONObject jsonObject =new JSONObject();
+		JSONObject jsonObject1 =new JSONObject();
+		JSONObject jsonObject2 =new JSONObject();
+		JSONObject jsonObject3 =new JSONObject();
+		JSONObject jsonObject4 =new JSONObject();
+		try {
+			
+			jsonObject.put("id", "0");
+			jsonObject.put("text","员工行为分析");
+			
+			jsonObject1.put("id", "1");
+			jsonObject1.put("url", "/research/researchList.do");
+			jsonObject1.put("pid", "0");
+			jsonObject1.put("text", "问题列表");
+			
+			jsonObject2.put("id", "2");
+			jsonObject2.put("url", "/factor/factorList.do");
+			jsonObject2.put("pid", "0");
+			jsonObject2.put("text", "因素管理");
+			
 			jsonObject3.put("id", "3");
-			jsonObject3.put("url", "update");
-			jsonObject3.put("text", "修改部门信息");
+			jsonObject3.put("url", "/research/researchAdd.do");
 			jsonObject3.put("pid", "0");
+			jsonObject3.put("text", "添加问题");
+			
+			
+			jsonObject4.put("id", "4");
+			jsonObject4.put("url", "add");
+			jsonObject4.put("pid", "0");
+			jsonObject4.put("text", "统计分析");
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -148,9 +219,9 @@ public class TreeController {
 		jsonArray.put(jsonObject1);
 		jsonArray.put(jsonObject2);
 		jsonArray.put(jsonObject3);
+		jsonArray.put(jsonObject4);
 		
 		String data=jsonArray.toString();
-		System.out.println("data: "+data);
 		return data;
 	}
 	

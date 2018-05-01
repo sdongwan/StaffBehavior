@@ -11,9 +11,10 @@ import java.util.List;
 public interface IEntityDao {
 	 void insert(Object entity);
 	 void delById(int id);
-	 void update(Object entity,Object paramsPK);
+	 void updById(Object paramsPK);
 	 Object findById(int id);
-	 Object findBySql(String sql,String params);
+	 Object findBySql(String sql,Object params);
 	 void updateBySql(String sql, Object params);
 	 List<Object> getAll();
+	 List<Object> getList(String sql, Object params);
 }

@@ -15,19 +15,42 @@
 			    }
 		</style>
 		<script type="text/javascript">
-		
+			
 	        
 		</script>
 	</head>
 	<body>
-		 staff
-		 <div class="mini-splitter" style="width:100%;height:100%;">
-		    <div size="15%" showCollapseButton="true" style="padding:5px;">
-		        1
-		    </div>
-		    <div showCollapseButton="true">
-		        2
-		    </div>        
+		<div class="mini-splitter" style="width:100%;height:100%;">
+			<div size="15%" showCollapseButton="true" style="padding:5px;">
+		  		<div class="mini-fit">
+	            <ul id="staffTree" class="mini-tree" url="${ctx}/tree/factorTree.do" 
+	            	style="width:100%;"  showTreeIcon="true" textField="text" idField="id" parentField="pid" resultAsTree="false">        
+	            </ul>
+       		 </div>
+		   </div>
+		   <div showCollapseButton="true">
+		   	   <div class="mini-fit">
+			   	   <iframe id="mainframe" frameborder="0" name="main" 
+		       	   		style="width:100%;height:100%" border="0">
+		       	   		
+		       	   </iframe> 
+		   	   </div>
+		   </div>        
 		</div>
+		<script type="text/javascript">
+			mini.parse();
+			var tree = mini.get("staffTree");
+			var iframe = document.getElementById("mainframe");  
+			
+			//节点点击事件
+        	tree.on("nodeselect", function (e) {
+        		var node = e.node;
+        		console.log(node);
+	            if (e.isLeaf) {
+	            	iframe.src = "${ctx}"+node.url;  
+	            }
+       		});
+        	
+		</script>
 	</body>
 </html>

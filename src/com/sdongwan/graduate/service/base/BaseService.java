@@ -1,5 +1,7 @@
 package com.sdongwan.graduate.service.base;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sdongwan.graduate.dao.base.IEntityDao;
@@ -17,16 +19,24 @@ public abstract class BaseService {
 	
 	public abstract IEntityDao getIEntityDao();
 	
-	public void insert(Object entity){
+	public Object insert(Object entity){
 		getIEntityDao().insert(entity);
+		return ok;
 	}
 	
-	public void delById(int id){
+	public Object delById(int id){
 		getIEntityDao().delById(id);
+		return ok;
 	}
 	
-	public void update(Object entity,int id) {
-		getIEntityDao().update(entity, id);
+	public Object updById(Object param) {
+		getIEntityDao().updById(param);
+		return ok;
+	}
+	
+	public Object updBySql(String sql, Object param) {
+		getIEntityDao().updateBySql(sql, param);
+		return ok;
 	}
 	
 	public Object findById(int id) {
@@ -41,4 +51,11 @@ public abstract class BaseService {
 		return getIEntityDao().getAll();
 	}
 	
+	public Object getOne(String sql,Object params) {
+		return getIEntityDao().findBySql(sql, params);
+	}
+	
+	public List<?> getList(String sql,Object params) {
+		return (List<?>) getIEntityDao().getList(sql, params);
+	}
 }

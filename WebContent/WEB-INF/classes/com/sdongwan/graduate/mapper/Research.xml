@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdongwan.graduate.model.Research">
+
+	<resultMap id="BaseResultMap" type="com.sdongwan.graduate.model.Research"
+		autoMapping="true">
+	</resultMap>
+	
+	<insert id="add" parameterType="com.sdongwan.graduate.model.Research">
+		insert into t_research
+			(
+				question,
+				factor_id,
+				valid_flag,
+				create_time
+			) 
+			values 
+			(
+				#{question,jdbcType=VARCHAR},
+				#{factorId,jdbcType=INTEGER},
+				#{validFlag,jdbcType=INTEGER},
+				now()
+			)
+	</insert>
+	
+	<select id="findById" parameterType="int" resultMap="BaseResultMap">
+		select * from t_research 
+			where research_id = #{researchId,jdbcType=INTEGER}	
+	</select>
+	
+	<select id="getAll" resultMap="BaseResultMap">
+		select * from t_research 	
+	</select>
+	
+	
+</mapper>

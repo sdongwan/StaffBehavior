@@ -13,165 +13,206 @@
 			    	margin:0;
 			    	overflow:hidden;
 			    }
+			div {
+				text-align:center;
+			}    
+			
 		</style>
 		<script type="text/javascript">
 		
 	        
 		</script>
 	</head>
-	<body>
-		<div style="width:800px;">
-	        <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
-	            <table style="width:100%;">
-	                <tr>
-	                    <td style="width:100%;">
-	                        <a class="mini-button" iconCls="icon-add" onclick="add()">增加</a>
-	                        <a class="mini-button" iconCls="icon-add" onclick="edit()">编辑</a>
-	                        <a class="mini-button" iconCls="icon-remove" onclick="remove()">删除</a>       
-	                    </td>
-	                    <td style="white-space:nowrap;">
-	                        <input id="key" class="mini-textbox" emptyText="请输入姓名" style="width:150px;" onenter="onKeyEnter"/>   
-	                        <a class="mini-button" onclick="search()">查询</a>
-	                    </td>
-	                </tr>
-	            </table>           
-	        </div>
-   		</div>
-	    <div id="datagrid1" class="mini-datagrid" style="width:800px;height:280px;" allowResize="true"
-	        url="${ctx}/staff/stafflist.do"  idField="id" multiSelect="true">
-	        <div property="columns">
-	            <!--<div type="indexcolumn"></div>        -->
-	            <div type="checkcolumn" ></div>        
-	            <div field="account" width="120" headerAlign="center" allowSort="true">员工帐号</div>    
-	            <div field="staffName" width="120" headerAlign="center" allowSort="true">姓名</div>    
-	            <div header="工作信息">
-	                <div property="columns">
-	                    <div field="post_id" width="120">所属部门</div>
-	                    <div field="job_id" width="100">职位</div>
-	                    <div field="enterTime" width="100">入职时间</div>
-	                    <div field="workYear" width="100">工作年限</div>
-	                    <div field="salary" dataType="currency" currencyUnit="￥" align="right" width="100" allowSort="true">薪资</div>
-	                </div>
+	<body>    
+	      <form id="form1" method="post">
+	        <fieldset style="border:solid 1px #aaa;padding:3px;">
+	            <legend >基本信息</legend>
+	           <div style="padding:5px;">
+	        <table>
+	            <tr>
+	                <td style="width:80px;">姓名</td>
+	                <td style="width:150px;">    
+	                    <input name="staffName" class="mini-textbox" required="true"/>
+	                </td>
+	                <td style="width:80px;">性别：</td>
+	                <td >                        
+	                    <select name="gender" class="mini-radiobuttonlist">
+	                        <option value="0">男</option>
+	                        <option value="1">女</option>
+	                    </select>
+	                </td>
+	                <td >    
+	                    <input name="married" class="mini-checkbox" text="已婚"  trueValue="1" falseValue="0" />
+	                </td>
+	            </tr>
+	            
+	            <tr>
+	                <td >出生日期：</td>
+	                <td >    
+	                    <input id="birthday" name="birthday" class="mini-datepicker" required="true" emptyText="请选择日期"
+	                    	format="yyyy-MM-dd"/>
+	                </td>
+	                
+	                <td >籍贯：</td>
+	                <td >    
+	                    <input name="hometown" class="mini-textbox"  />
+	                </td>
+	                
+	            </tr>
+	            
+	            <tr>
+                    <td >学历：</td>
+                    <td >    
+                        <input name="education" class="mini-combobox" valueField="id" textField="name" url="" />
+                    </td>
+                    <td >毕业院校：</td>
+                    <td >    
+                        <input name="graduateSchool" class="mini-textbox" />
+                    </td>
+	            
+	            <tr>
+	                
+	            </tr>
+	            <tr>
+	                <td >备注：</td>
+	                <td colspan="3">    
+	                    <input name="remark" class="mini-textarea" style="width:386px;" />
+	                </td>
+	            </tr>          
+	        </table>            
 	            </div>
-	            <div field="createtime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">创建日期</div>    
-	            <div header="基本信息">
-	                <div property="columns">
-	                    <div field="gender" width="100" renderer="onGenderRenderer">性别</div>
-	                    <div field="age" width="100" allowSort="true">年龄</div>
-	                    <div field="birthday" width="100" renderer="onBirthdayRenderer">出生日期</div>
-	                    <div field="married" width="100" align="center" renderer="onMarriedRenderer">婚否</div>
-	                </div>
+	        </fieldset>
+	        
+	        <fieldset style="border:solid 1px #aaa;padding:3px;">
+	            <legend >工作信息</legend>
+	            <div style="padding:5px;">
+		            <table style="table-layout:fixed;">
+		                <tr>
+		                    <td style="width:80px;">员工帐号：</td>
+		                    <td style="width:150px;">    
+		                        <input name="account" class="mini-textbox" required="true"  emptyText="请输入帐号"/>
+		                    </td>
+		                    
+		                    <td style="width:80px;">员工密码：</td>
+		                    <td style="width:150px;">    
+		                        <input name="password" class="mini-textbox" required="true"  emptyText="请输入密码"/>
+		                    </td>
+		                    
+		                    <td style="width:80px;">所属部门：</td>
+		                    <td style="width:150px;">    
+		                        <input name="departId" class="mini-combobox" valueField="departId" textField="departName" 
+		                            url="${ctx}/depart/getDepartList.do"
+		                            onvaluechanged="onDepartChanged" required="true"
+		                             emptyText="请选择部门"/>
+		                    </td>
+		                </tr>
+		                <tr>
+		                 	<td >职位：</td>
+		                    <td >    
+		                        <input name="jobId" class="mini-combobox" valueField="jobId" textField="jobName"
+		                        url="${ctx}/job/getJobNameAndId.do?departId=1"/>
+		                    </td>
+		                    
+		                    <td style="width:80px;">公司名称：</td>
+		                    <td style="width:150px;">    
+		                       <input name="companyId" class="mini-combobox" required="true"  emptyText="请选择公司"
+		                       url="${ctx}/company/getAll.do" textField="companyName" valueField="companyId" required="true"/>
+		                    </td>
+		                    
+		                    <td >薪资待遇：</td>
+		                    <td >    
+		                        <input name="salary" class="mini-textbox" required="true"/>
+		                    </td>
+		                </tr>
+		                <tr>
+		                	<td >入职时间：</td>
+			                <td >    
+			                    <input name="enterTime" class="mini-datepicker" format="yyyy-MM-dd" required="true"  />
+			                </td>
+		                </tr>
+		            </table>
 	            </div>
-	            <div header="学历信息" align="center">
-	                <div property="columns">
-	                    <div field="education" width="100">学历</div>
-	                    <div field="graduateSchool" width="120">毕业院校</div>
-	                </div>
-	            </div>                     
-	        </div>
-	    </div>
+	        </fieldset>
+	        <div style="text-align:center;padding:10px;">               
+	            <a class="mini-button" onclick="onOk" style="width:60px;margin-right:20px;">确定</a>       
+	            <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       
+	        </div>        
+	    </form>
 	    <script type="text/javascript">
 	        mini.parse();
 	
-	        var grid = mini.get("datagrid1");
-	        grid.load();
+	        var form = new mini.Form("form1");
 	
-	        function add() {
-	
-	            mini.open({
-	                targetWindow: window,
-	
-	                url: bootPATH + "../demo/CommonLibs/EmployeeWindow.html",
-	                title: "新增员工", width: 600, height: 400,
-	                onload: function () {
-	                    var iframe = this.getIFrameEl();
-	                    var data = { action: "new" };
-	                    iframe.contentWindow.SetData(data);
-	                },
-	                ondestroy: function (action) {
-	
-	                    grid.reload();
-	                }
-	            });
+	      	// 标准方法接口定义
+	        function SetData(data) {
+	            if (data.action == "edit") {
+	                //跨页面传递的数据对象，克隆后才可以安全使用
+	                data = mini.clone(data);
+	                var url = "${ctx}/staff/getStaffById.do"
+                    var  rdata = {staffId:data.staffId};
+                    $.post(url,rdata,function(result){
+                    	var o = mini.decode(result);
+                        form.setData(o);
+                        form.setChanged(false);
+                    });
+	            }
 	        }
 	
-	        function edit() {
-	         
-            var row = grid.getSelected();
-            if (row) {
-                mini.open({
-                    url: bootPATH + "../demo/CommonLibs/EmployeeWindow.html",
-                    title: "编辑员工", width: 600, height: 400,
-                    onload: function () {
-                        var iframe = this.getIFrameEl();
-                        var data = { action: "edit", id: row.id };
-                        iframe.contentWindow.SetData(data);
-
-                    },
-                    ondestroy: function (action) {
-                        //var iframe = this.getIFrameEl();
-
-                        grid.reload();
-
-                    }
-                });
-                
-            } else {
-                alert("请选中一条记录");
-            }
-            
-        }
-        function remove() {
-            
-            var rows = grid.getSelecteds();
-            if (rows.length > 0) {
-                if (confirm("确定删除选中记录？")) {
-                    var ids = [];
-                    for (var i = 0, l = rows.length; i < l; i++) {
-                        var r = rows[i];
-                        ids.push(r.id);
-                    }
-                    var id = ids.join(',');
-                    grid.loading("操作中，请稍后......");
-                    $.ajax({
-                        url: "../data/AjaxService.aspx?method=RemoveEmployees&id=" +id,
-                        success: function (text) {
-                            grid.reload();
-                        },
-                        error: function () {
-                        }
-                    });
-                }
-            } else {
-                alert("请选中一条记录");
-            }
-        }
-        function search() {
-            var key = mini.get("key").getValue();
-            grid.load({ key: key });
-        }
-        
-        function onKeyEnter(e) {
-            search();
-        }
-        
-        function onBirthdayRenderer(e) {
-            var value = e.value;
-            if (value) return mini.formatDate(value, 'yyyy-MM-dd');
-            return "";
-        }
-        function onMarriedRenderer(e) {
-            if (e.value == 1) return "是";
-            else return "否";
-        }
-        var Genders = [{ id: 1, text: '男' }, { id: 2, text: '女'}];        
-        function onGenderRenderer(e) {
-            for (var i = 0, l = Genders.length; i < l; i++) {
-                var g = Genders[i];
-                if (g.id == e.value) return g.text;
-            }
-            return "";
-        }
-    </script>
+	        function GetData() {
+	            var o = form.getData();
+	            return o;
+	        }
+	        
+	        function CloseWindow(action) {            
+	            if (action == "close" && form.isChanged()) {
+	                if (confirm("数据被修改了，是否先保存？")) {
+	                    return false;
+	                }
+	            }
+	            if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+	            else window.close();            
+	        }
+	        
+	        function onOk(e) {
+	            SaveData();
+	        }
+	        
+	        function onCancel(e) {
+	            CloseWindow("cancel");
+	        }
+	    
+	    	function SaveData() {
+			    var data = form.getData(true);            
+			    form.validate();
+			    if (form.isValid() == false) {
+			    	return;
+			    }
+	            var url = "${ctx}/staff/addStaff.do";
+	            $.post(url,data,function(r){
+	          	if (r == "ok") {
+	          		CloseWindow("save");
+			    } else {
+					CloseWindow("save");
+				}
+       		 });
+	       }
+	    	  
+			function onOk() {
+				SaveData();
+			}
+			
+			function onCancel() {
+				CloseWindow("cancel");
+			}
+		 
+			function onDepartChanged() {
+	    		 var departCombo = mini.getbyName("departId");
+	             var jobCombo = mini.getbyName("jobId");
+	             var departId = departCombo.getValue();
+	             jobCombo.load("${ctx}/job/getJobNameAndId.do?departId=" + departId);
+	             jobCombo.setValue("");
+	    	}
+	    </script>
 	</body>
+
 </html>

@@ -34,8 +34,8 @@ public  abstract class BaseDao implements IEntityDao {
 	}
 
 	@Override
-	public void update(Object entity, Object paramsPK) {
-		String updateStatement = this.getNameSpace()+".update";
+	public void updById(Object paramsPK) {
+		String updateStatement = this.getNameSpace()+".updById";
 		sqlSessionTemplate.update(updateStatement, paramsPK);
 	}
 	
@@ -52,7 +52,7 @@ public  abstract class BaseDao implements IEntityDao {
 	}
 
 	@Override
-	public Object findBySql(String sql, String params) {
+	public Object findBySql(String sql, Object params) {
 		String findStatement = this.getNameSpace()+"."+sql;
 		return sqlSessionTemplate.selectOne(findStatement, params);
 	};
@@ -63,5 +63,9 @@ public  abstract class BaseDao implements IEntityDao {
 		return sqlSessionTemplate.selectList(getAll);
 	}
 	
-
+	@Override
+	public List<Object> getList (String sql, Object params) {
+		String getAll = this.getNameSpace()+"."+sql;
+		return sqlSessionTemplate.selectList(getAll,params);
+	}
 }

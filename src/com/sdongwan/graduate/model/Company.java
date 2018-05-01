@@ -11,6 +11,9 @@ public class Company {
 	private String companyAddress;
 	private String companyPhone;
 	private String createTime;
+	private String updateTime;
+	private String remark;
+	
 	
 	/**
 	 * 公司编号
@@ -70,4 +73,25 @@ public class Company {
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
+
+	/**
+	 * 修改日期
+	 * @return
+	 */
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	
 }

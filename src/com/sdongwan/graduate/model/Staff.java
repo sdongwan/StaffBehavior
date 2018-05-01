@@ -15,13 +15,16 @@ public class Staff {
 	private int jobId;
 	private int workYear;
 	private String enterTime;
-	private String gender;
+	private int gender;
 	private String salary;
-	private int age;
 	private String education;
 	private String graduateSchool;
-	private String married;
+	private int married;
 	private String birthday;
+	private String remark;
+	private String createTime;
+	private String updateTime;
+	private String hometown;
 	
 	/**
 	 * 员工编号
@@ -135,11 +138,11 @@ public class Staff {
 	 * 年龄
 	 * @return
 	 */
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 
@@ -155,17 +158,6 @@ public class Staff {
 		this.salary = salary;
 	}
 
-	/**
-	 * 年龄
-	 * @return
-	 */
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 
 	/**
 	 * 学历
@@ -196,11 +188,11 @@ public class Staff {
 	 * 婚姻
 	 * @return
 	 */
-	public String getMarried() {
+	public int getMarried() {
 		return married;
 	}
 
-	public void setMarried(String married) {
+	public void setMarried(int married) {
 		this.married = married;
 	}
 
@@ -214,6 +206,54 @@ public class Staff {
 
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+	
+	/**
+	 * 备注
+	 * @return
+	 */
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	/**
+	 * 创建日期
+	 * @return
+	 */
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	/**
+	 * 修改日期
+	 * @return
+	 */
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	/**
+	 * 籍贯
+	 * @return
+	 */
+	public String getHometown() {
+		return hometown;
+	}
+
+	public void setHometown(String hometown) {
+		this.hometown = hometown;
 	}
 	
 }
