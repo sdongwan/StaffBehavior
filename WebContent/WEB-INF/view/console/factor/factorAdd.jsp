@@ -24,7 +24,7 @@
 		</script>
 	</head>
 	<body>
-		 <table style="table-layout:fixed;">
+		 <table style="table-layout:fixed;" id="factor-form">
                <tr>
                    <td style="width:80px;">因素名称：</td>
                    <td style="width:150px;">    
@@ -49,7 +49,24 @@
 	        </div>  
 	    <script type="text/javascript">
 	        mini.parse();
-			
+	        
+			var form = new mini.Form("#factor-form"); 
+	   		
+	   		function onSaveDepart () {
+	   		 	form.validate();
+	            if (form.isValid() == false) return;
+	   		  	// 提交表单数据
+	            var data = form.getData(true);      //获取表单多个控件的数据
+	            //var json = mini.encode(data);   //序列化成JSON
+	            var url = "${ctx}/factor/addFactor.do";
+	   			$.post(url,data,function (r) {
+	   				if (r == "ok") {
+	   					mini.alert("添加成功");
+	   				} else {
+	   					mini.alert("添加失败");
+	   				}
+	   			})
+	   		}
 	        
    		</script>
 	</body>

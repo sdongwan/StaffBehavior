@@ -39,6 +39,7 @@
 	        <div property="columns">
 	            <div field="jobId" width="120" headerAlign="center" allowSort="true">职位编号</div>    
 	            <div field="jobName" width="120" headerAlign="center" allowSort="true">职位名称</div>    
+	            <div field="departId" width="120" headerAlign="center" allowSort="true">部门编号</div>  
                 <div field="createTime" width="100">创建时间</div>
                 <div field="updateTime" width="100">修改时间</div>
                 <div field="remark"  width="200">备注</div>
@@ -79,7 +80,7 @@
 	                title: "编辑员工", width: 700, height: 400,
 	                onload: function () {
 	                    var iframe = this.getIFrameEl();
-	                    var data = { action: "edit", id: row.id };
+	                    var data = { action: "edit", jobId: row.jobId };
 	                    iframe.contentWindow.SetData(data);
 	                },
 	                ondestroy: function (action) {
@@ -92,28 +93,27 @@
 	          }
       		}
 	        
-	       function onItemDel() {
-	           var rows = grid.getSelecteds();
-	           if (rows.length > 0) {
-	               if (confirm("确定删除选中记录？")) {
-	                   var ids = [];
-	                   for (var i = 0, l = rows.length; i < l; i++) {
-	                       var r = rows[i];
-	                       ids.push(r.id);
-	                   }
-	                   var id = ids.join(',');
-	                   grid.loading("操作中，请稍后......");
-	                   $.ajax({
-	                       url: "../data/AjaxService.aspx?method=RemoveEmployees&id=" +id,
-	                       success: function (text) {
-	                           grid.reload();
-	                       }
-	                   });
-	               }
-	           } else {
-	               alert("请选中一条记录");
-	           }
-	       	}
+	        function onItemDel() {
+		           var rows = grid.getSelecteds();
+		           if (rows.length > 0) {
+		               if (confirm("确定删除选中记录？")) {
+		                   var id = rows[0].jobId;
+		                   //grid.loading("操作中，请稍后......");
+		                   var url = "${ctx}/job/delJob.do";
+		                   var data = {jobId : id};
+		                   $.post(url,data,function (r){
+		                	   if (r == "ok") {
+			   	   					mini.alert("删除成功");
+			   	   				 	grid.reload();
+			   	   				} else {
+			   	   					mini.alert("删除失败");
+			   	   				}
+		                   }) ;
+		               }
+		           } else {
+		               mini.alert("请选中一条记录");
+		           }
+		       	}
       
 	      document.oncontextmenu = function()
 	      {

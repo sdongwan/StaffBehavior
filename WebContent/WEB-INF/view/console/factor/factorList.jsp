@@ -61,8 +61,8 @@
 	
 	            mini.open({
 	                targetWindow: window,
-	                url: "${ctx}/factor/factorAdd.do",
-	                title: "新增员工", width: 700, height: 400,
+	                url: "${ctx}/factor/add.do",
+	                title: "新增因素", width: 700, height: 400,
 	                onload: function () {
 	                    var iframe = this.getIFrameEl();
 	                    var data = { action: "new" };
@@ -79,11 +79,11 @@
 	            var row = grid.getSelected();
 	            if (row) {
 	                mini.open({
-	                    url: "${ctx}/factor/factorUpdate.do",
-	                    title: "编辑员工", width: 700, height: 400,
+	                    url: "${ctx}/factor/update.do",
+	                    title: "编辑因素", width: 700, height: 400,
 	                    onload: function () {
 	                        var iframe = this.getIFrameEl();
-	                        var data = { action: "edit", id: row.id };
+	                        var data = { action: "edit", factorId: row.factorId };
 	                        iframe.contentWindow.SetData(data);
 	                    },
 	                    ondestroy: function (action) {
@@ -95,31 +95,29 @@
             } else {
                 mini.alert("请选中一条记录");
             }
-            
         }
         function remove() {
-            
-            var rows = grid.getSelecteds();
-            if (rows.length > 0) {
-                if (confirm("确定删除选中记录？")) {
-                    var ids = [];
-                    for (var i = 0, l = rows.length; i < l; i++) {
-                        var r = rows[i];
-                        ids.push(r.id);
-                    }
-                    var id = ids.join(',');
-                    grid.loading("操作中，请稍后......");
-                    $.ajax({
-                        url: "../data/AjaxService.aspx?method=RemoveEmployees&id=" +id,
-                        success: function (text) {
-                            grid.reload();
-                        }
-                    });
-                }
-            } else {
-                alert("请选中一条记录");
-            }
+           var rows = grid.getSelecteds();
+           if (rows.length > 0) {
+               if (confirm("确定删除选中记录？")) {
+                   var id = rows[0].factorId;
+                   //grid.loading("操作中，请稍后......");
+                   var url = "${ctx}/factor/delFactor.do";
+                   var data = {jobId : id};
+                   $.post(url,data,function (r){
+                	   if (r == "ok") {
+	   	   					mini.alert("删除成功");
+	   	   				 	grid.reload();
+	   	   				} else {
+	   	   					mini.alert("删除失败");
+	   	   				}
+                   }) ;
+               }
+           } else {
+               mini.alert("请选中一条记录");
+           }
         }
+        
         function search() {
             var key = mini.get("key").getValue();
             grid.load({ key: key });
@@ -128,19 +126,6 @@
         function onKeyEnter(e) {
             search();
         }
-        
-        function onBirthdayRenderer(e) {
-            var value = e.value;
-            if (value) return mini.formatDate(value, 'yyyy-MM-dd');
-            return "";
-        }
-        
-        function onMarriedRenderer(e) {
-            if (e.value == 1) return "是";
-            else return "否";
-        }
-        
-        var Genders = [{ id: 1, text: '男' }, { id: 2, text: '女'}];  
         
         function onGenderRenderer(e) {
             for (var i = 0, l = Genders.length; i < l; i++) {

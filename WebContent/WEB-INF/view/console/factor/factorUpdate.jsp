@@ -24,11 +24,15 @@
 		</script>
 	</head>
 	<body>
-		 <table style="table-layout:fixed;">
+		 <table style="table-layout:fixed;" id="factor-form">
                <tr>
+               	   <input name="factorId" class="mini-hidden"/>
                    <td style="width:80px;">因素名称：</td>
                    <td style="width:150px;">    
-                       <input name="factorName" class="mini-textbox" valueField="id" 
+                       <input 
+                       	   name="factorName" 
+                       	   class="mini-textbox" 
+                       	   valueField="id" 
                            required="true"/>
                    </td>
                    <td >创建时间：</td>
@@ -49,7 +53,60 @@
 	        </div>  
 	    <script type="text/javascript">
 	        mini.parse();
-			
+	    	
+	   		var form = new mini.Form("#factor-form"); 
+	   		
+		   	function SetData(data) {
+                 if (data.action == "edit") {
+                     //跨页面传递的数据对象，克隆后才可以安全使用
+                     data = mini.clone(data);
+                     var url = "${ctx}/factor/getFactorById.do"
+                     var  rdata = {factorId:data.factorId};
+                     $.post(url,rdata,function(result){
+	                      var o = mini.decode(result);
+	                      form.setData(o);
+	                      form.setChanged(false);
+                     });
+                 }
+              }
+	   	   
+		   	 function SaveData() {
+                 var data = form.getData(true);            
+                 form.validate();
+                 if (form.isValid() == false) {
+                 	return;
+                 }
+                 
+                 var url = "${ctx}/factor/updateFactor.do";
+                 $.post(url,data,function(r){
+                 	if (r == "ok") {
+                 		CloseWindow("save");
+ 	   				} else {
+ 	   					CloseWindow("save");
+ 	   				}
+                 });
+             }
+             
+             function onCancel() {
+             	CloseWindow("cancel");
+             }
+             
+             function onOk() {
+             	SaveData();
+             }
+             
+            function CloseWindow(action) {            
+                if (action == "close" && form.isChanged()) {
+                    if (confirm("数据被修改了，是否先保存？")) {
+                        return false;
+                    }
+                }
+                if (window.CloseOwnerWindow) {
+                	return window.CloseOwnerWindow(action);
+                } else {
+                	window.close();
+                }
+            }
 	        
    		</script>
 	</body>

@@ -26,7 +26,20 @@
 			(
 				#{factorName,jdbcType=VARCHAR},
 				#{remark,jdbcType=VARCHAR},
-				now()
+				#{createTime,jdbcType=VARCHAR}
 			)
 	</insert>
+	
+	<update id="updById" parameterType="com.sdongwan.graduate.model.Factor">
+		update t_factor set
+			factor_name = #{factorName,jdbcType=VARCHAR},
+			update_time = date_format(now(),'%Y-%m-%d'),
+			remark = #{remark,jdbcType=VARCHAR}
+		where factor_id = #{factorId,jdbcType=INTEGER}
+	</update>
+	
+	<delete id="delById" parameterType="int">
+		delete from t_factor where factor_id = #{factorId,jdbcType=INTEGER}
+	</delete>
+	
 </mapper>

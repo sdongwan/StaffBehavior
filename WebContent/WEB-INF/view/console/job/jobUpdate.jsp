@@ -21,9 +21,11 @@
 	</head>
 	<body>
 		    <table style="table-layout:fixed;" id="job-form">
+		    
                <tr>
                    <td style="width:80px;">部门名称：</td>
                    <td style="width:150px;">    
+                   		<input  name="jobId" class="mini-hidden" >
                        <input name="departId" class="mini-combobox" valueField="departId"  
                            required="true"
                            textField="departName"
@@ -39,12 +41,6 @@
                    </td>
                </tr>
                <tr>
-           	   	   <td >创建时间：</td>
-	               <td >    
-	               		<input name="createTime" class="mini-datepicker" required="true" emptyText="请选择日期"/>
-	               </td>
-               </tr>
-               <tr>
                		<td >备注：</td>
 	                <td colspan="3">    
 	                    <input name="remark" class="mini-textarea" style="width:386px;" />
@@ -52,7 +48,7 @@
 	            </tr>    
            </table>
            <div style="text-align:center;padding:10px;">               
-	            <a class="mini-button" onclick="onOk" style="width:60px;margin-right:20px;">确定</a>       
+	            <a class="mini-button" onclick="onUpdateJob" style="width:60px;margin-right:20px;">确定</a>       
 	            <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       
 	        </div>  
 	        <script type="text/javascript">
@@ -78,6 +74,60 @@
 		   				}
 		   			})
 		   		}
+		   		
+			   	   function SetData(data) {
+	                   if (data.action == "edit") {
+	                       //跨页面传递的数据对象，克隆后才可以安全使用
+	                       data = mini.clone(data);
+	                       var url = "${ctx}/job/getJobById.do"
+	                       var  rdata = {jobId:data.jobId};
+	                       $.post(url,rdata,function(result){
+	                       	var o = mini.decode(result);
+	                           form.setData(o);
+	                           form.setChanged(false);
+	                       });
+	                   }
+	               }
+		   	   
+			   	 function SaveData() {
+	                 var data = form.getData(true);            
+	                 form.validate();
+	                 if (form.isValid() == false) {
+	                 	return;
+	                 }
+	                 
+	                 var url = "${ctx}/job/updateJob.do";
+	                 $.post(url,data,function(r){
+	                 	if (r == "ok") {
+	                 		CloseWindow("save");
+	 	   				} else {
+	 	   					CloseWindow("save");
+	 	   				}
+	                 });
+	             }
+	             
+	             function onCancel() {
+	             	CloseWindow("cancel");
+	             }
+	             
+	             function onUpdateJob() {
+	             	SaveData();
+	             }
+	             
+	             
+                function CloseWindow(action) {            
+                    if (action == "close" && form.isChanged()) {
+                        if (confirm("数据被修改了，是否先保存？")) {
+                            return false;
+                        }
+                    }
+                    if (window.CloseOwnerWindow) {
+                    	return window.CloseOwnerWindow(action);
+                    } else {
+                    	window.close();
+                    }
+                }
+	                
 	    	</script>
 	</body>
 </html>

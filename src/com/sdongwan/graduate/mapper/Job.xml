@@ -29,13 +29,28 @@
 			(
 				job_name,
 				depart_id,
-				create_time
+				create_time,
+				remark
 			) 
 			values 
 			(
 				#{jobName,jdbcType=VARCHAR},
 				#{departId,jdbcType=INTEGER},
-				now()
+				#{createTime,jdbcType=VARCHAR},
+				#{remark,jdbcType=VARCHAR}
 			)
 	</insert>
+	
+	<update id="updById" parameterType="com.sdongwan.graduate.model.Job" >
+		update t_job set 
+			depart_id = #{departId,jdbcType=INTEGER},
+			job_name = #{jobName,jdbcType=VARCHAR},
+			remark = #{remark,jdbcType=VARCHAR},
+			update_time = date_format(now(),'%Y-%m-%d')
+			where job_id = #{jobId,jdbcType=INTEGER}
+	</update>
+	
+	<delete id="delById" parameterType="int">
+		delete from t_job where job_id = #{jobId,jdbcType=INTEGER}		
+	</delete>
 </mapper>
