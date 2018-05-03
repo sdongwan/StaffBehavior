@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sdongwan.graduate.model.Research;
 import com.sdongwan.graduate.service.ResearchService;
+import com.sdongwan.graduate.util.RequestUtil;
 
 /**
 * @author sdongwan 
@@ -22,28 +24,90 @@ public class ResearchController {
 	private ResearchService  researchService;
 	
 	
-	@RequestMapping( { "researchList" } ) 
-	public ModelAndView researchList(HttpServletRequest request) {
+	@RequestMapping( { "list" } ) 
+	public ModelAndView list(HttpServletRequest request) {
 		return new ModelAndView("/console/research/researchList");
 	}
 	
-	@RequestMapping( { "researchAdd" } ) 
-	public ModelAndView researchAdd(HttpServletRequest request) {
+	@RequestMapping( { "add" } ) 
+	public ModelAndView add(HttpServletRequest request) {
 		return new ModelAndView("/console/research/researchAdd");
 	}
 	
-	@RequestMapping( { "researchUpdate" } ) 
-	public ModelAndView researchUpdate(HttpServletRequest request) {
+	@RequestMapping( { "update" } ) 
+	public ModelAndView update(HttpServletRequest request) {
 		return new ModelAndView("/console/research/researchUpdate");
 	}
 	
 	
 	@ResponseBody
-	@RequestMapping( { "list" } ) 
-	public Object list(HttpServletRequest request) {
+	@RequestMapping( { "listResearch" } ) 
+	public Object listResearch(HttpServletRequest request) {
 		return researchService.getAll();
 	}
 	
+	@RequestMapping({ "addResearch" })
+	@ResponseBody
+	public Object addResearch(HttpServletRequest request) {
+		String question = RequestUtil.getString(request, "question");
+		int factorId = RequestUtil.getInt(request, "factorId");
+		int validFlag = RequestUtil.getInt(request, "validFlag");
+		
+		Research research =new Research();
+		research.setQuestion(question);
+		research.setFactorId(factorId);
+		research.setValidFlag(validFlag);
+		
+		try {
+			return researchService.insert(research);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}
+	}
 	
+	@ResponseBody
+	@RequestMapping( {"updateResearch"} )
+	public Object updateResearch (HttpServletRequest request) {
+		int researchId = RequestUtil.getInt(request, "researchId");
+		int factorId = RequestUtil.getInt(request, "factorId");
+		int validFlag = RequestUtil.getInt(request, "validFlag");
+		String question = RequestUtil.getString(request, "question");
+		String remark = RequestUtil.getString(request, "remark");
+		
+		Research research =new Research();
+		research.setQuestion(question);
+		research.setResearchId(researchId);
+		research.setFactorId(factorId);
+		research.setValidFlag(validFlag);
+		
+		try {
+			researchService.updById(research);
+			return "ok";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}
+	}
+	
+
+	@ResponseBody
+	@RequestMapping( {"delResearch"} )
+	public Object delFactor (HttpServletRequest request) {
+		int researchId = RequestUtil.getInt(request, "researchId");
+		try {
+			return researchService.delById(researchId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping( {"getResearchById"} )
+	public Object getFactorById (HttpServletRequest request) {
+		int researchId = RequestUtil.getInt(request, "researchId");
+		return researchService.findById(researchId);
+	}
 	
 }

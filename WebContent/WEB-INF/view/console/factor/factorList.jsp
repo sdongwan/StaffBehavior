@@ -42,7 +42,7 @@
 	        </div>
    		</div>
 	    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:90%;" allowResize="true"
-	        url="${ctx}/factor/list.do"  idField="factorId" multiSelect="true">
+	        url="${ctx}/factor/listFactor.do"  idField="factorId" multiSelect="true">
 	        <div property="columns">
 	            <div field="factorId" width="120" headerAlign="center" allowSort="true">因素编号</div>    
 	            <div field="factorName" width="120" headerAlign="center" allowSort="true">因素名称</div>    
@@ -75,7 +75,6 @@
 	        }
 	
 	        function edit() {
-	         
 	            var row = grid.getSelected();
 	            if (row) {
 	                mini.open({
@@ -103,7 +102,7 @@
                    var id = rows[0].factorId;
                    //grid.loading("操作中，请稍后......");
                    var url = "${ctx}/factor/delFactor.do";
-                   var data = {jobId : id};
+                   var data = {factorId : id};
                    $.post(url,data,function (r){
                 	   if (r == "ok") {
 	   	   					mini.alert("删除成功");

@@ -52,7 +52,7 @@
 	        
 			var form = new mini.Form("#factor-form"); 
 	   		
-	   		function onSaveDepart () {
+	   		function onOk () {
 	   		 	form.validate();
 	            if (form.isValid() == false) return;
 	   		  	// 提交表单数据
@@ -67,7 +67,6 @@
 	   				}
 	   			})
 	   		}
-	        
    		</script>
 	</body>
 </html>

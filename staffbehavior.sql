@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-05-01 22:42:01
+Date: 2018-05-03 22:57:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,7 +48,7 @@ CREATE TABLE `t_depart` (
   `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`depart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_depart
@@ -68,6 +68,7 @@ INSERT INTO `t_depart` VALUES ('19', '00001', '14', '14', '2018-05-01', '', '0')
 INSERT INTO `t_depart` VALUES ('20', '00001', '14', '14', '2018-05-01', '', '0');
 INSERT INTO `t_depart` VALUES ('21', '00001', '14', '14', '2018-05-01', '', '0');
 INSERT INTO `t_depart` VALUES ('22', '00001', '14', '14', '2018-05-01', '', '0');
+INSERT INTO `t_depart` VALUES ('23', '00001', '测试', '0', '2018-05-02', '', '测试');
 
 -- ----------------------------
 -- Table structure for `t_factor`
@@ -77,15 +78,16 @@ CREATE TABLE `t_factor` (
   `factor_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '影响行为因素编号',
   `factor_name` varchar(20) NOT NULL DEFAULT '' COMMENT '影响行为因素名称',
   `create_time` varchar(20) DEFAULT NULL COMMENT '创建时间',
-  `updateTime` varchar(20) DEFAULT '' COMMENT '修改日期',
+  `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`factor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_factor
 -- ----------------------------
 INSERT INTO `t_factor` VALUES ('1', '环境氛围', '2018-04-30', '', '');
+INSERT INTO `t_factor` VALUES ('2', '环境氛围', '2018-04-30', '', 'fdsf');
 
 -- ----------------------------
 -- Table structure for `t_job`
@@ -99,12 +101,14 @@ CREATE TABLE `t_job` (
   `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_job
 -- ----------------------------
 INSERT INTO `t_job` VALUES ('1', '见习软件开发人员', '1', '2018-04-21', '', '');
+INSERT INTO `t_job` VALUES ('2', '测试', '0', '2018-05-02 21:08:23', '', '');
+INSERT INTO `t_job` VALUES ('5', '发士大夫', '9', '2018-05-09', '', '发射点');
 
 -- ----------------------------
 -- Table structure for `t_research`
@@ -118,12 +122,31 @@ CREATE TABLE `t_research` (
   `factor_id` int(5) NOT NULL DEFAULT '0' COMMENT '因素编号',
   `valid_flag` int(1) NOT NULL DEFAULT '0' COMMENT '问卷调查问题有效性（0：无效 ；1：有限）',
   PRIMARY KEY (`research_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_research
 -- ----------------------------
 INSERT INTO `t_research` VALUES ('1', '你觉得什么样的环境适合工作？', '2018-02-29', '2018-02-29', '1', '1');
+INSERT INTO `t_research` VALUES ('3', 'vfdv', '2018-05-03', '', '1', '1');
+INSERT INTO `t_research` VALUES ('4', 'fdsf', '2018-05-03', '', '1', '1');
+
+-- ----------------------------
+-- Table structure for `t_research_result`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_research_result`;
+CREATE TABLE `t_research_result` (
+  `result_id` int(25) NOT NULL AUTO_INCREMENT,
+  `research_id` int(25) NOT NULL,
+  `staff_id` int(25) NOT NULL,
+  `research_reply` varchar(255) NOT NULL DEFAULT '' COMMENT '問卷回答保存',
+  `create_time` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`result_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_research_result
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `t_staff`
@@ -150,7 +173,7 @@ CREATE TABLE `t_staff` (
   `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `hometown` varchar(10) DEFAULT '' COMMENT '籍贯',
   PRIMARY KEY (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_staff
@@ -163,6 +186,7 @@ INSERT INTO `t_staff` VALUES ('7', '0', '0', 'fdsfds', '1', '0', '2018-05-01', '
 INSERT INTO `t_staff` VALUES ('8', '0', '0', 'gd', '0', '0', '2018-05-01', 'gfdg', 'gfdgg', '0', '500', '', '', '0', '2018-05-01', '', '2018-05-01', '', 'gdfg');
 INSERT INTO `t_staff` VALUES ('9', '0', '0', 'fdsfsd', '1', '0', '2018-05-01', 'fdsf', 'fdsf', '0', '500', '', '', '0', '2018-05-01', '', '2018-05-01', '', 'fdsf');
 INSERT INTO `t_staff` VALUES ('10', '1', '0', 'fdsfsd', '1', '0', '2018-05-01', 'fdsf', 'fdsf', '0', 'fdsf', '', '', '1', '2018-05-01', '', '2018-05-01', '', '');
+INSERT INTO `t_staff` VALUES ('11', '9', '1', '1', '0', '0', '2018-05-29', 'fdsf', 'fdsf', '0', 'fdsf', '', 'fdsf', '1', '2018-05-02', 'fdsf', '2018-05-02', '', '安徽');
 
 -- ----------------------------
 -- Table structure for `t_sys_user`

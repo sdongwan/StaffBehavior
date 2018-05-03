@@ -1,5 +1,7 @@
 package com.sdongwan.graduate.controller.system;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sdongwan.graduate.model.Research;
+import com.sdongwan.graduate.service.ResearchService;
 import com.sdongwan.graduate.service.StaffService;
 import com.sdongwan.graduate.util.RequestUtil;
 
@@ -20,6 +24,9 @@ public class SystemController {
 	
 	@Resource
 	private StaffService staffService;
+	
+	@Resource
+	private ResearchService researchService;
 	
 	/**
 	 * 转页到登陆页面
@@ -51,10 +58,10 @@ public class SystemController {
 		String account = RequestUtil.getString(request, "account");
 		String password = RequestUtil.getString(request, "password");
 		boolean flag=staffService.isCanLogin(account, password);
-		System.out.println("flag "+flag);
 		if (!flag) {
 			return new ModelAndView("/system/systemLogin");
 		}
-		return new ModelAndView("/system/systemResearch");
+		List<Research> researchList = (List<Research>) researchService.getAll();
+		return new ModelAndView("/system/systemResearch").addObject("researchList", researchList);
 	}
 }

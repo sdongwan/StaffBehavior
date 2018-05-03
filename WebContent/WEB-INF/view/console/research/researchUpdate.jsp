@@ -24,10 +24,11 @@
 		</script>
 	</head>
 	<body>
-		<table style="table-layout:fixed;">
+		<table style="table-layout:fixed;" id="research-form">
                <tr>
                    <td style="width:80px;">问卷题目：</td>
                    <td style="width:150px;">    
+                       <input name="researchId" class="mini-hidden"/>
                        <input name="question" class="mini-textbox" valueField="id" 
                            required="true"/>
                    </td>
@@ -37,9 +38,9 @@
 	               </td>
                </tr>
                <tr>
-               		<td >备注：</td>
-	                <td colspan="3">    
-	                    <input name="remark" class="mini-textarea" style="width:386px;" />
+	                <td >是否有效：</td>
+	                <td >    
+	                    <input name="validFlag" class="mini-textbox" />
 	                </td>
 	            </tr>    
            </table>
@@ -49,7 +50,64 @@
 	        </div>  
 	    <script type="text/javascript">
 	        mini.parse();
-	       
+	        var form = new mini.Form("#research-form"); 
+	   		
+	   		function onOk () {
+	   			SaveData();
+	   		}
+	   		
+	   	   function SetData(data) {
+               if (data.action == "edit") {
+                   //跨页面传递的数据对象，克隆后才可以安全使用
+                   data = mini.clone(data);
+                   var url = "${ctx}/research/getResearchById.do"
+                   var rdata = {researchId:data.researchId};
+                   $.post(url,rdata,function(result){
+                   	   var o = mini.decode(result);
+                       form.setData(o);
+                       form.setChanged(false);
+                   });
+                }
+            }
+	   	   
+		   	 function SaveData() {
+                 var data = form.getData(true);            
+                 form.validate();
+                 if (form.isValid() == false) {
+                 	return;
+                 }
+                 
+                 var url = "${ctx}/research/updateResearch.do";
+                 $.post(url,data,function(r){
+                 	if (r == "ok") {
+                 		CloseWindow("save");
+ 	   				} else {
+ 	   					CloseWindow("save");
+ 	   				}
+                 });
+             }
+             
+             function onCancel() {
+             	CloseWindow("cancel");
+             }
+             
+             function onUpdateJob() {
+             	SaveData();
+             }
+             
+             
+            function CloseWindow(action) {            
+                if (action == "close" && form.isChanged()) {
+                    if (confirm("数据被修改了，是否先保存？")) {
+                        return false;
+                    }
+                }
+                if (window.CloseOwnerWindow) {
+                	return window.CloseOwnerWindow(action);
+                } else {
+                	window.close();
+                }
+            }
     	</script>
 	</body>
 </html>

@@ -26,13 +26,13 @@
 	<body>
 		 <table style="table-layout:fixed;" id="factor-form">
                <tr>
-               	   <input name="factorId" class="mini-hidden"/>
+               	   
                    <td style="width:80px;">因素名称：</td>
-                   <td style="width:150px;">    
+                   <td style="width:150px;">   
+                   	  <input name="factorId" class="mini-hidden"/> 
                        <input 
                        	   name="factorName" 
                        	   class="mini-textbox" 
-                       	   valueField="id" 
                            required="true"/>
                    </td>
                    <td >创建时间：</td>

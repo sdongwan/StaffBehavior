@@ -11,7 +11,6 @@ public class Research {
 	private String updateTime;
 	private int factorId;
 	private int validFlag;
-	
 	/**
 	 * 编号
 	 * @return
@@ -72,4 +71,5 @@ public class Research {
 	public void setValidFlag(int validFlag) {
 		this.validFlag = validFlag;
 	}
+	
 }

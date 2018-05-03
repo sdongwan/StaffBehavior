@@ -33,7 +33,7 @@
 	        </div>
    		</div>
 	    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:90%;" allowResize="true"
-	        url="${ctx}/research/list.do" contextMenu="#gridMenu" idField="id" multiSelect="true">
+	        url="${ctx}/research/listResearch.do" contextMenu="#gridMenu" idField="id" multiSelect="true">
 	        <div property="columns">
 	            <div field="researchId" width="120" headerAlign="center" allowSort="true">问卷题目标号</div>    
 	            <div field="question" width="120" headerAlign="center" allowSort="true">调查问题</div>    
@@ -58,7 +58,7 @@
 	       function onItemAdd() {
 	            mini.open({
 	                targetWindow: window,
-	                url: "${ctx}/research/researchAdd.do",
+	                url: "${ctx}/research/add.do",
 	                title: "新增问卷题目", width: 500, height: 350,
 	                onload: function () {
 	                    var iframe = this.getIFrameEl();
@@ -76,11 +76,11 @@
 	           var row = grid.getSelected();
 	           if (row) {
 	            mini.open({
-	                url: "${ctx}/research/researchUpdate.do",
+	                url: "${ctx}/research/update.do",
 	                title: "编辑员工", width: 700, height: 400,
 	                onload: function () {
 	                    var iframe = this.getIFrameEl();
-	                    var data = { action: "edit", id: row.id };
+	                    var data = { action: "edit", researchId: row.researchId };
 	                    iframe.contentWindow.SetData(data);
 	                },
 	                ondestroy: function (action) {
@@ -96,15 +96,9 @@
 	           var rows = grid.getSelecteds();
 	           if (rows.length > 0) {
 	               if (confirm("确定删除选中记录？")) {
-	                   var ids = [];
-	                   for (var i = 0, l = rows.length; i < l; i++) {
-	                       var r = rows[i];
-	                       ids.push(r.id);
-	                   }
-	                   var id = ids.join(',');
 	                   grid.loading("操作中，请稍后......");
-	                   var url = "${ctx}/research/delete.do";
-	                   var data = {id:id}
+	                   var url = "${ctx}/research/delResearch.do";
+	                   var data = {researchId:rows[0].researchId}
 	                   $.post(url,data,function(r){
 	                	   if (r == "ok" ) {
 	                		   grid.reload();

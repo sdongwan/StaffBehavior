@@ -25,7 +25,7 @@
                <tr>
                    <td style="width:80px;">部门名称：</td>
                    <td style="width:150px;">    
-                   		<input  name="jobId" class="mini-hidden" >
+                   	   <input  name="jobId" class="mini-hidden" >
                        <input name="departId" class="mini-combobox" valueField="departId"  
                            required="true"
                            textField="departName"

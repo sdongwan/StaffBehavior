@@ -24,27 +24,26 @@ public class FactorController {
 	@Resource
 	private FactorService factorService;
 	
-	@RequestMapping( { "factorList" } ) 
-	public ModelAndView factorList(HttpServletRequest request) {
+	@RequestMapping( { "list" } ) 
+	public ModelAndView list(HttpServletRequest request) {
 		return new ModelAndView("/console/factor/factorList");
 	}
 	
-	@RequestMapping( { "factorAdd" } ) 
-	public ModelAndView factorAdd(HttpServletRequest request) {
+	@RequestMapping( { "add" } ) 
+	public ModelAndView add(HttpServletRequest request) {
 		return new ModelAndView("/console/factor/factorAdd");
 	}
 	
-	@RequestMapping( { "factorUpdate" } ) 
-	public ModelAndView factorUpdate(HttpServletRequest request) {
+	@RequestMapping( { "update" } ) 
+	public ModelAndView update(HttpServletRequest request) {
 		return new ModelAndView("/console/factor/factorUpdate");
 	}
 	
 	@ResponseBody
-	@RequestMapping( { "list" } ) 
-	public Object list(HttpServletRequest request) {
+	@RequestMapping( { "listFactor" } ) 
+	public Object listFactor(HttpServletRequest request) {
 		return factorService.getAll();
 	}
-	
 	
 	@RequestMapping({ "addFactor" })
 	@ResponseBody

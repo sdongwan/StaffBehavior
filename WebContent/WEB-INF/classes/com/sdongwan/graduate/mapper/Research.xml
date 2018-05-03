@@ -18,8 +18,8 @@
 			(
 				#{question,jdbcType=VARCHAR},
 				#{factorId,jdbcType=INTEGER},
-				#{validFlag,jdbcType=INTEGER},
-				now()
+				1,
+				date_format(now(),'%Y-%m-%d')
 			)
 	</insert>
 	
@@ -32,5 +32,17 @@
 		select * from t_research 	
 	</select>
 	
+	<delete id="delById" parameterType="int">
+		delete from t_research where research_id = #{researchId,jdbcType=INTEGER}		
+	</delete>
+	
+	<update id="updById" parameterType="com.sdongwan.graduate.model.Research" >
+		update t_research set 
+			factor_id = #{factorId,jdbcType=INTEGER},
+			question = #{question,jdbcType=VARCHAR},
+			update_time = date_format(now(),'%Y-%m-%d'),
+			valid_flag = #{validFlag,jdbcType=INTEGER}
+			where research_id = #{researchId,jdbcType=INTEGER}
+	</update>
 	
 </mapper>

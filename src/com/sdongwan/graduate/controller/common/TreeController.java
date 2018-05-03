@@ -191,17 +191,17 @@ public class TreeController {
 			jsonObject.put("text","员工行为分析");
 			
 			jsonObject1.put("id", "1");
-			jsonObject1.put("url", "/research/researchList.do");
+			jsonObject1.put("url", "/research/list.do");
 			jsonObject1.put("pid", "0");
 			jsonObject1.put("text", "问题列表");
 			
 			jsonObject2.put("id", "2");
-			jsonObject2.put("url", "/factor/factorList.do");
+			jsonObject2.put("url", "/factor/list.do");
 			jsonObject2.put("pid", "0");
 			jsonObject2.put("text", "因素管理");
 			
 			jsonObject3.put("id", "3");
-			jsonObject3.put("url", "/research/researchAdd.do");
+			jsonObject3.put("url", "/research/add.do");
 			jsonObject3.put("pid", "0");
 			jsonObject3.put("text", "添加问题");
 			

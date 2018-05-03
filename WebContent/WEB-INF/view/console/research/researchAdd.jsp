@@ -24,16 +24,22 @@
 		</script>
 	</head>
 	<body>
-	    <table style="table-layout:fixed;">
+	    <table style="table-layout:fixed;" id="research-form">
                <tr>
                    <td style="width:80px;">问卷题目：</td>
-                   <td style="width:150px;">    
+                   <td style="width:150px;">     
                        <input name="question" class="mini-textbox" valueField="id" 
                            required="true"/>
                    </td>
                    <td >因素分类：</td>
 	               <td >    
-	               		<input name="factorId" class="mini-textbox" required="true" emptyText="请选择因素分类"/>
+	               		<input name="factorId" 
+		               		class="mini-combobox" 
+		               		valueField="factorId" 
+		               		textField="factorName" 
+		               		required="true" 
+		               		url="${ctx}/factor/listFactor.do"
+		               		emptyText="请选择因素分类"/>
 	               </td>
                </tr>
                <tr>
@@ -49,7 +55,25 @@
 	        </div>  
 	    <script type="text/javascript">
 	        mini.parse();
-	       
+	        
+			var form = new mini.Form("#research-form"); 
+	   		
+	   		function onOk () {
+	   		 	form.validate();
+	            if (form.isValid() == false) return;
+	   		  	// 提交表单数据
+	            var data = form.getData(true);      //获取表单多个控件的数据
+	            //var json = mini.encode(data);   //序列化成JSON
+	            var url = "${ctx}/research/addResearch.do";
+	   			$.post(url,data,function (r) {
+	   				if (r == "ok") {
+	   					mini.alert("添加成功");
+	   				} else {
+	   					mini.alert("添加失败");
+	   				}
+	   			})
+	   		}
+	        
     	</script>
 	</body>
 </html>
