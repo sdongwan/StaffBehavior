@@ -87,7 +87,7 @@
 	</select>
 
 	<select id = "findByAccount" parameterType="String" resultMap="BaseResultMap" >
-		select account,password from t_staff
+		select * from t_staff
 			where account = #{account,jdbcType=VARCHAR}
 	</select>
 	

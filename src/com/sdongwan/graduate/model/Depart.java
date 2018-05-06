@@ -13,6 +13,7 @@ public class Depart {
 	private String createTime;
 	private String updateTime;
 	private String remark;
+	private Company company;
 	
 	/**
 	 * 修改日期
@@ -93,5 +94,13 @@ public class Depart {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 }

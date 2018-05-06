@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		 <div class="header" >        
-	        <div style="height:40px;line-height:40px;padding-left:15px;font-family:Tahoma;font-size:16px;font-weight:bold;">
+	        <div style="height:40px;line-height:40px;padding-left:15px;font-family:Tahoma;font-size:16px;font-weight:bold;background-color: #3498DB;color:white;">
 	            	员工行为分析系统后台管理
 	        </div>
     	</div>

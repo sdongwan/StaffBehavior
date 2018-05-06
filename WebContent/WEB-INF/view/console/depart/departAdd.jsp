@@ -20,32 +20,34 @@
 		</script>
 	</head>
 	<body>
-	    <table style="table-layout:fixed;" id="form-depart">
-              <tr>
-                  <td style="width:80px;" >部门编号：</td>
-                  <td style="width:150px;">    
-                      <input id="departId" name="departId" class="mini-textbox" allowInput="false" required="true"/>
-                  </td>
-                  <td style="width:80px;">部门名称：</td>
-                  <td style="width:150px;">    
-                       <input name="departName" class="mini-textbox" required="true"  emptyText="请填写部门名称"/>
-                  </td>
-              </tr>
-              <tr>
-	         	  <td style="width:80px;">公司名称：</td>
-	              <td style="width:150px;">    
-		              <input name="companyId" class="mini-combobox" required="true"  emptyText="请选择公司"
-		                     url="${ctx}/company/getAll.do" textField="companyName" valueField="companyId" required="true"/>
-	              </td>
-              </tr>
-             
-              <tr>
-           		<td >备注：</td>
-                <td colspan="3">    
-                    <input name="remark" class="mini-textarea" style="width:386px;" />
-                </td>
-            </tr>    
-         </table>
+		<div style="text-align:center;">
+		    <table style="table-layout:fixed;" id="form-depart">
+	              <tr>
+	                  <td style="width:80px;" >部门编号：</td>
+	                  <td style="width:150px;">    
+	                      <input id="departId" name="departId" class="mini-textbox" allowInput="false" required="true"/>
+	                  </td>
+	                  <td style="width:80px;">部门名称：</td>
+	                  <td style="width:150px;">    
+	                       <input name="departName" class="mini-textbox" required="true"  emptyText="请填写部门名称"/>
+	                  </td>
+	              </tr>
+	              <tr>
+		         	  <td style="width:80px;">公司名称：</td>
+		              <td style="width:150px;">    
+			              <input name="companyId" class="mini-combobox" required="true"  emptyText="请选择公司"
+			                     url="${ctx}/company/getAll.do" textField="companyName" valueField="companyId" required="true"/>
+		              </td>
+	              </tr>
+	             
+	              <tr>
+	           		<td >备注：</td>
+	                <td colspan="3">    
+	                    <input name="remark" class="mini-textarea" style="width:386px;" />
+	                </td>
+	            </tr>    
+	         </table>
+	     </div>
         <div style="text-align:center;padding:10px;">               
             <a class="mini-button" onclick="onSaveDepart" style="width:60px;margin-right:20px;">确定</a>       
             <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       

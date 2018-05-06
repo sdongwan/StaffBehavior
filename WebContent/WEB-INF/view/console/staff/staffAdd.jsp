@@ -69,7 +69,6 @@
                     <td >    
                         <input name="graduateSchool" class="mini-textbox" />
                     </td>
-	            
 	            <tr>
 	                
 	            </tr>

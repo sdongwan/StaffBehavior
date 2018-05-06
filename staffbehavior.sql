@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-05-03 22:57:18
+Date: 2018-05-06 23:39:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,13 +48,12 @@ CREATE TABLE `t_depart` (
   `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`depart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_depart
 -- ----------------------------
 INSERT INTO `t_depart` VALUES ('1', '00001', '研发二部', '10', '2018-04-21', '', '');
-INSERT INTO `t_depart` VALUES ('9', '00001', '测试小组', '0', '2018-05-01', '18-05-01', 'gdfg');
 INSERT INTO `t_depart` VALUES ('10', '00001', '市场', '0', '2018-05-01', '', '');
 INSERT INTO `t_depart` VALUES ('11', '00001', '测试', '0', '2018-05-01', '2018-05-01', '随风倒十分');
 INSERT INTO `t_depart` VALUES ('12', '00001', '测试', '0', '2018-05-01', '2018-05-01', '地方大师傅');
@@ -69,6 +68,7 @@ INSERT INTO `t_depart` VALUES ('20', '00001', '14', '14', '2018-05-01', '', '0')
 INSERT INTO `t_depart` VALUES ('21', '00001', '14', '14', '2018-05-01', '', '0');
 INSERT INTO `t_depart` VALUES ('22', '00001', '14', '14', '2018-05-01', '', '0');
 INSERT INTO `t_depart` VALUES ('23', '00001', '测试', '0', '2018-05-02', '', '测试');
+INSERT INTO `t_depart` VALUES ('24', '00001', ',,', '0', '2018-05-06', '', 'lkl');
 
 -- ----------------------------
 -- Table structure for `t_factor`
@@ -81,7 +81,7 @@ CREATE TABLE `t_factor` (
   `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`factor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_factor
@@ -122,7 +122,7 @@ CREATE TABLE `t_research` (
   `factor_id` int(5) NOT NULL DEFAULT '0' COMMENT '因素编号',
   `valid_flag` int(1) NOT NULL DEFAULT '0' COMMENT '问卷调查问题有效性（0：无效 ；1：有限）',
   PRIMARY KEY (`research_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_research
@@ -130,6 +130,7 @@ CREATE TABLE `t_research` (
 INSERT INTO `t_research` VALUES ('1', '你觉得什么样的环境适合工作？', '2018-02-29', '2018-02-29', '1', '1');
 INSERT INTO `t_research` VALUES ('3', 'vfdv', '2018-05-03', '', '1', '1');
 INSERT INTO `t_research` VALUES ('4', 'fdsf', '2018-05-03', '', '1', '1');
+INSERT INTO `t_research` VALUES ('5', 'fdf', '2018-05-06', '', '1', '1');
 
 -- ----------------------------
 -- Table structure for `t_research_result`
@@ -142,11 +143,32 @@ CREATE TABLE `t_research_result` (
   `research_reply` varchar(255) NOT NULL DEFAULT '' COMMENT '問卷回答保存',
   `create_time` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`result_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_research_result
 -- ----------------------------
+INSERT INTO `t_research_result` VALUES ('1', '0', '0', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('2', '0', '0', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('3', '0', '0', 'fdsfds', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('4', '0', '1', 'fdsfds', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('5', '0', '1', 'fdsfsd', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('6', '0', '1', 'fdsfsd', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('7', '1', '1', 'fdsfds', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('8', '3', '1', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('9', '4', '1', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('10', '1', '1', 'csdf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('11', '3', '1', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('12', '4', '1', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('13', '5', '1', 'fdsf', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('14', '1', '1', '', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('15', '3', '1', '', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('16', '4', '1', '', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('17', '5', '1', '', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('18', '1', '1', '2', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('19', '3', '1', '2', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('20', '4', '1', '1', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('21', '5', '1', '3', '2018-05-06');
 
 -- ----------------------------
 -- Table structure for `t_staff`

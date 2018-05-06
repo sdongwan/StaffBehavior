@@ -38,9 +38,8 @@
 	<body>
 		<h2>员工行为分析调查系统</h2>
 		<h3>员工登陆</h3>
-		<div id="loginWindow" class="mini-window" title="用户登录" style="width:350px;height:165px;" 
-   			showModal="true" showCloseButton="false">
-			<form action="${ctx}/system/research.do" method="post" id="loginForm">
+		<div class="mini-fit">
+			<form id="loginForm">
 				<table>
 			        <tr>
 			            <td>
@@ -62,20 +61,46 @@
 			        </tr>            
 			        <tr>
 			            <td>
-			                <input value="登陆" type="submit"/>
+			            	<a class="mini-button" onclick="onLogin" style="width:60px;margin-right:10px;">登录</a>  
 			            </td>
 			            <td>
-			                <input value="重置" type="reset" />
+			                <a class="mini-button" onclick="onCancel" style="width:60px;">重置</a>      
 			            </td>
 			        </tr>
 		    	</table>
 		    </form>
 	    </div>
-    	
+    	<div style="line-height:28px;text-align:center;cursor:default">Copyright ©  graduation project by sdongwan from WuYi University  </div>
 		<script type="text/javascript">
 			mini.parse();
-			var loginWindow = mini.get("loginWindow");
-	        loginWindow.show();
+			
+	        var form = new mini.Form("#loginForm");
+	        
+	        function onLogin() {
+	   		 	form.validate();
+	            if (form.isValid() == false) return;
+	   		  	// 提交表单数据
+	            var data = form.getData();      //获取表单多个控件的数据
+	            var account = data.account;
+	            var url = "${ctx}/system/research.do";
+	   			$.post(url,data,function (r) {
+	   				if (r == "ok") {
+		   	            mini.loading("登录成功，马上转到系统...", "登录成功");
+		   	            setTimeout(function () {
+		   	                window.location = "${ctx}/system/toResearch.do?account="+account;
+		   	            }, 1500);
+	   				} else {
+	   					mini.loading("登录失败，尝试重新登录", "登录失败");
+		   				setTimeout(function () {
+		   	                window.location = "${ctx}/system/login.do";
+		   	            }, 1500);
+	   				}
+	   			})
+	   		}
+	        
+	        function onCancel() {
+	        	form.clear();
+	        }
 		</script>
 	</body>
 </html>

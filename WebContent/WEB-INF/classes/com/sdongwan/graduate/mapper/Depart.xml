@@ -4,6 +4,9 @@
 
 	<resultMap id="BaseResultMap" type="com.sdongwan.graduate.model.Depart"
 		autoMapping="true">
+		<association property="company" javaType="com.sdongwan.graduate.model.Company">
+			<result property="companyName" column="companyName"/>
+		</association>
 	</resultMap>
 	
 	<select id="getAll" resultMap="BaseResultMap">
@@ -24,7 +27,23 @@
 	</select>
 	
 	<select id="getListByPage" parameterType="hashmap" resultMap="BaseResultMap">
-		select * from t_depart limit #{begin,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+		select 
+			depart_id,
+			t_depart.company_id,
+			depart_name,
+			staff_num,
+			t_depart.create_time,
+			t_depart.update_time,
+			t_depart.remark ,
+			t_company.company_name companyName
+		from t_depart left join t_company 
+		on t_depart.company_id = t_company.company_id 
+		<where>
+			<if test="companyName != '' ">
+				t_company.company_name = #{companyName,jdbcType=VARCHAR}
+			</if>
+		</where>
+		limit #{begin,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
 	</select>
 	
 	<select id="getCount" resultType="int">

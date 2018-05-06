@@ -31,7 +31,7 @@ document.write('<script src="' + bootPATH + 'jquery.min.js" type="text/javascrip
 document.write('<script src="' + bootPATH + 'miniui/miniui.js" type="text/javascript" ></script>');
 document.write('<link href="' + bootPATH + 'miniui/themes/default/miniui.css" rel="stylesheet" type="text/css" />');
 document.write('<link href="' + bootPATH + 'miniui/themes/icons.css" rel="stylesheet" type="text/css" />');
-
+document.write('<link href="' + bootPATH + 'skin.css" rel="stylesheet" type="text/css" />');
 
 //mode
 var mode = getCookie("miniuiMode");
@@ -77,4 +77,4 @@ function setCookie(name, value, Days){
     //document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();  
 }  
 
-setCookie("miniuiSkin","bootstrap");			
+//setCookie("miniuiSkin","bootstrap");			

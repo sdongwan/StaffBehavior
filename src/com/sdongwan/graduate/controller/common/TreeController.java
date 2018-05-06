@@ -2,6 +2,7 @@ package com.sdongwan.graduate.controller.common;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -207,7 +208,7 @@ public class TreeController {
 			
 			
 			jsonObject4.put("id", "4");
-			jsonObject4.put("url", "add");
+			jsonObject4.put("url", "/research/analyze.do");
 			jsonObject4.put("pid", "0");
 			jsonObject4.put("text", "统计分析");
 			
@@ -225,4 +226,43 @@ public class TreeController {
 		return data;
 	}
 	
+	
+	@RequestMapping( value = {"answer"} ,produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	public Object answer (HttpServletRequest request) {
+		JSONArray jsonArray = new JSONArray();
+		JSONObject jsonObject1 =new JSONObject();
+		JSONObject jsonObject2 =new JSONObject();
+		JSONObject jsonObject3 =new JSONObject();
+		JSONObject jsonObject4 =new JSONObject();
+		JSONObject jsonObject5 =new JSONObject();
+		try {
+			jsonObject1.put("id", "1");
+			jsonObject1.put("text", "非常不同意");
+			
+			jsonObject2.put("id", "2");
+			jsonObject2.put("text", "比较不同意");
+			
+			jsonObject3.put("id", "3");
+			jsonObject3.put("text", "一般");
+			
+			jsonObject4.put("id", "4");
+			jsonObject4.put("text", "比较同意");
+
+			jsonObject5.put("id", "5");
+			jsonObject5.put("text","非常同意");
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		jsonArray.put(jsonObject1);
+		jsonArray.put(jsonObject2);
+		jsonArray.put(jsonObject3);
+		jsonArray.put(jsonObject4);
+		jsonArray.put(jsonObject5);
+		
+		String data=jsonArray.toString();
+		return data;
+	}
 }

@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 */
 @RequestMapping({ "/admin" })
 @Controller
-public class ConsoleController {
+public class AdminController {
 	
 	/**
 	 * 转页部门管理界面

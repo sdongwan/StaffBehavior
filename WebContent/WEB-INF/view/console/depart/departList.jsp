@@ -25,7 +25,7 @@
 	            <table style="width:100%;">
 	                <tr>
 	                    <td style="white-space:nowrap;">
-	                        <input id="key" class="mini-textbox" emptyText="请输入姓名" style="width:150px;" onenter="onKeyEnter"/>   
+	                        <input id="companyName" class="mini-textbox" emptyText="请输入部门名称" style="width:150px;" onenter="onKeyEnter"/>   
 	                        <a class="mini-button" onclick="search()">查询</a>
 	                    </td>
 	                </tr>
@@ -35,13 +35,13 @@
 	    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:90%;" allowResize="true"
 	        url="${ctx}/depart/getDepartByPage.do" contextMenu="#gridMenu" idField="departId" multiSelect="true">
 	        <div property="columns">
-	            <div field="departId" width="120" headerAlign="center" allowSort="true">部门编号</div>    
-	            <div field="companyId" width="120" headerAlign="center" allowSort="true">公司名称</div>    
-                <div field="departName" width="120">部门名称</div>
-                <div field="staffNum" width="100">员工数量</div>
-                <div field="createTime" width="100">创建时间</div>
-                <div field="updateTime" width="100">修改时间</div>
-                <div field="remark"  width="100">备注</div>
+	            <div field="departId" width="120" allowSort="true" headerAlign="center" align="center" >部门编号</div>    
+	            <div field="company.companyName" width="120" allowSort="true" headerAlign="center" align="center" >公司名称</div>    
+                <div field="departName" width="120" headerAlign="center" align="center" >部门名称</div>
+                <div field="staffNum" width="100" headerAlign="center" align="center" >员工数量</div>
+                <div field="createTime" width="100" headerAlign="center" align="center" >创建时间</div>
+                <div field="updateTime" width="100" headerAlign="center" align="center" >修改时间</div>
+                <div field="remark"  width="100" headerAlign="center" align="center" >备注</div>
 	        </div>
 	    </div>
 	    
@@ -57,8 +57,8 @@
 	       grid.load();
 	       
 	       function search() {
-	            var key = mini.get("key").getValue();
-	            grid.load({ key: key });
+	            var companyName = mini.get("companyName").getValue();
+	            grid.load({ companyName: companyName });
 	       }
 	       
 	       function onKeyEnter() {

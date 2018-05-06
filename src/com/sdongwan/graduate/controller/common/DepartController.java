@@ -48,17 +48,18 @@ public class DepartController {
 	@ResponseBody
 	@RequestMapping(value="getDepartByPage",produces = "application/json; charset=utf-8")
 	public Object departList(HttpServletRequest request) {
+		String companyName = RequestUtil.getString(request, "companyName");
 		int pageIndex = RequestUtil.getInt(request, "pageIndex");
 		int pageSize = RequestUtil.getInt(request, "pageSize");
 		int begin = pageIndex*pageSize;
 		int end = begin + pageSize;
-		HashMap<String, Integer> hashmap = new HashMap<>();
+		HashMap<String, Object> hashmap = new HashMap<>();
 		hashmap.put("begin", begin);
 		hashmap.put("end", end);
+		hashmap.put("companyName", companyName);
 		List<Depart> departs = (List<Depart>) departService.getList("getListByPage", hashmap);
 		int count = (int) departService.getOne("getCount", null);
 		String result = PageUtil.makeData(count, departs);
-		System.out.println(result);
 		return result;
 	}
 	

@@ -39,6 +39,10 @@ public class ResearchController {
 		return new ModelAndView("/console/research/researchUpdate");
 	}
 	
+	@RequestMapping( { "analyze" } ) 
+	public ModelAndView analyze(HttpServletRequest request) {
+		return new ModelAndView("/console/researchAnalyze");
+	}
 	
 	@ResponseBody
 	@RequestMapping( { "listResearch" } ) 
