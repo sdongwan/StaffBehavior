@@ -61,6 +61,7 @@
 			function onExit() {
 				window.location = "${ctx}/console/logout.do" ;
 			}
+			
 		</script>
 	</body>
 </html>
