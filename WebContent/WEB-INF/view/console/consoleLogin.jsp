@@ -105,9 +105,18 @@
 				color:#000000;
 			}
 			
-			input:-webkit-autofill{
-				background-color: #f0f0f0;
-			}
+			input:-webkit-autofill {
+	        	-webkit-box-shadow: 0 0 0px 1000px white inset;
+		    }
+		    
+		    body .mini-error .mini-textbox-border{
+		    	border-color:#ffffff;
+		    	background-color:#ffffff;
+		    }
+		    
+		    .mini-required .mini-textbox-border{
+		    	background-color:#ffffff;
+		    }
 		</style>
 		<script type="text/javascript">
 		
@@ -139,16 +148,14 @@
 						<label for="username$text">帐号：</label>
 					</div>
 					<div>
-						<input name="account"  id="account" class="mini-textbox" onvalidation="onUserNameValidation" required="true" requiredErrorText="帐号不能为空"/>
-						<span id="account_error" class="errorText"></span>
+						<input name="account" autocomplete="off" id="account" class="mini-textbox" onvalidation="onUserNameValidation" required="true" requiredErrorText="帐号不能为空"/>
 					</div>
 				    
 				    <div>
 				    	<label for="pwd$text">密码：</label>
 				    </div>
 				    <div>
-				    	<input name="password" id="password" class="mini-password" onvalidation="onPwdValidation" vtype="minLength:5" required="true" minLengthErrorText="密码不能少于5个字符"/>
-				    	<span id="password_error" class="errorText"></span>
+				    	<input name="password" autocomplete="off" id="password" class="mini-password" onvalidation="onPwdValidation" vtype="minLength:5" required="true" minLengthErrorText="密码不能少于5个字符"/>
 				    </div>
 				    
 				    <div style="text-align:center;">
