@@ -12,7 +12,32 @@
 			    	height:100%;
 			    	margin:0;
 			    	overflow:hidden;
-			    }
+		    }
+		    
+		    .mini-button{
+		    	color:#ffffff;
+		    	background-color:#3498DB;
+		    	border-color:#3498DB;
+		    }
+		    
+		    .mini-button:active,.mini-button:hover{
+		    	color:#3498DB;
+		    	background-color:#ffffff;
+		    	border-color:#ffffff;
+		    }
+		    
+		    #job-form{
+		    	margin-left:auto;
+		    	margin-right:auto;
+		    }
+		    
+		    .top_margin_ten{
+		    	margin-top:10%;
+		    }
+		    
+		    .top_margin_two{
+		    	margin-top:4%;
+		    }
 		</style>
 		<script type="text/javascript">
 		
@@ -20,7 +45,7 @@
 		</script>
 	</head>
 	<body>
-		    <table style="table-layout:fixed;" id="job-form">
+		    <table id="job-form" class="top_margin_two">
 		    
                <tr>
                    <td style="width:80px;">部门名称：</td>
@@ -48,8 +73,8 @@
 	            </tr>    
            </table>
            <div style="text-align:center;padding:10px;">               
-	            <a class="mini-button" onclick="onUpdateJob" style="width:60px;margin-right:20px;">确定</a>       
-	            <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       
+	            <a class="mini-button" iconCls="fa fa-check" onclick="onUpdateJob" style="width:70px;margin-right:20px;">确定</a>       
+	            <a class="mini-button" iconCls="fa fa-remove" onclick="onCancel" style="width:70px;">取消</a>       
 	        </div>  
 	        <script type="text/javascript">
 		   		mini.parse();

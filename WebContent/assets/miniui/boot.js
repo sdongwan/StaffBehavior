@@ -32,6 +32,7 @@ document.write('<script src="' + bootPATH + 'miniui/miniui.js" type="text/javasc
 document.write('<link href="' + bootPATH + 'miniui/themes/default/miniui.css" rel="stylesheet" type="text/css" />');
 document.write('<link href="' + bootPATH + 'miniui/themes/icons.css" rel="stylesheet" type="text/css" />');
 document.write('<link href="' + bootPATH + 'skin.css" rel="stylesheet" type="text/css" />');
+document.write('<link href="' + bootPATH + 'font-awesome.min.css" rel="stylesheet" type="text/css" />');
 
 //mode
 var mode = getCookie("miniuiMode");

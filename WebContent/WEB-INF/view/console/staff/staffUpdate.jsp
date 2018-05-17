@@ -12,11 +12,28 @@
 			    	height:100%;
 			    	margin:0;
 			    	overflow:hidden;
-			    }
+		    }
+			    
 			div {
 				text-align:center;
 			}    
 			
+			.mini-button{
+		    	color:#ffffff;
+		    	background-color:#3498DB;
+		    	border-color:#3498DB;
+		    }
+		    
+		    .mini-button:active,.mini-button:hover{
+		    	color:#3498DB;
+		    	background-color:#ffffff;
+		    	border-color:#ffffff;
+		    }
+		    
+		    table{
+		    	margin-left:auto;
+		    	margin-right:auto;
+		    }
 		</style>
 		<script type="text/javascript">
 		
@@ -25,23 +42,24 @@
 	</head>
 	<body>    
 	      <form id="form1" method="post">
-	        <fieldset style="border:solid 1px #aaa;padding:3px;">
-	            <legend >基本信息</legend>
+	        <fieldset style="border:none;padding:3px;">
+	           <legend><span class="fa fa-tag"></span>基本信息</legend>
 	           <div style="padding:5px;">
 	        <table>
 	            <tr>
-	                <td style="width:80px;">姓名</td>
-	                <td style="width:150px;">    
+	                <td>姓名</td>
+	                <td>    
 	                    <input name="staffName" class="mini-textbox" required="true"/>
 	                </td>
-	                <td style="width:80px;">性别：</td>
+	                <td>性别：</td>
 	                <td >                        
 	                    <select name="gender" class="mini-radiobuttonlist">
 	                        <option value="0">男</option>
 	                        <option value="1">女</option>
 	                    </select>
 	                </td>
-	                <td >    
+	                <td>婚姻：</td>
+	                <td>    
 	                    <input name="married" class="mini-checkbox" text="已婚"  trueValue="1" falseValue="0" />
 	                </td>
 	            </tr>
@@ -83,23 +101,23 @@
 	            </div>
 	        </fieldset>
 	        
-	        <fieldset style="border:solid 1px #aaa;padding:3px;">
-	            <legend >工作信息</legend>
+	        <fieldset style="border:none;padding:3px;">
+	            <legend><span class="fa fa-tag"></span>工作信息</legend>
 	            <div style="padding:5px;">
 		            <table style="table-layout:fixed;">
 		                <tr>
-		                    <td style="width:80px;">员工帐号：</td>
-		                    <td style="width:150px;">    
+		                    <td>员工帐号：</td>
+		                    <td>    
 		                        <input name="account" class="mini-textbox" required="true"  emptyText="请输入帐号"/>
 		                    </td>
 		                    
-		                    <td style="width:80px;">员工密码：</td>
-		                    <td style="width:150px;">    
+		                    <td>员工密码：</td>
+		                    <td>    
 		                        <input name="password" class="mini-textbox" required="true"  emptyText="请输入密码"/>
 		                    </td>
 		                    
-		                    <td style="width:80px;">所属部门：</td>
-		                    <td style="width:150px;">    
+		                    <td>所属部门：</td>
+		                    <td>    
 		                        <input name="departId" class="mini-combobox" valueField="departId" textField="departName" 
 		                            url="${ctx}/depart/getDepartList.do"
 		                            onvaluechanged="onDepartChanged" required="true"
@@ -113,8 +131,8 @@
 		                        url="${ctx}/job/getJobNameAndId.do?departId=1"/>
 		                    </td>
 		                    
-		                    <td style="width:80px;">公司名称：</td>
-		                    <td style="width:150px;">    
+		                    <td>公司名称：</td>
+		                    <td>    
 		                       <input name="companyId" class="mini-combobox" required="true"  emptyText="请选择公司"
 		                       url="${ctx}/company/getAll.do" textField="companyName" valueField="companyId" required="true"/>
 		                    </td>

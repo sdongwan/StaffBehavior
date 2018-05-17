@@ -26,7 +26,7 @@
 	                <tr>
 	                    <td style="white-space:nowrap;">
 	                        <input id="companyName" class="mini-textbox" emptyText="请输入部门名称" style="width:150px;" onenter="onKeyEnter"/>   
-	                        <a class="mini-button" onclick="search()">查询</a>
+	                        <a class="mini-button" iconCls="fa fa-search" style="color:#3498DB;" onclick="search()">查询</a>
 	                    </td>
 	                </tr>
 	            </table>           
@@ -46,9 +46,9 @@
 	    </div>
 	    
 	    <ul id="gridMenu" name="gridMenu" class="mini-menu" style="display:none;" onbeforeopen="onBeforeOpen">
-            <li iconCls="icon-add" onclick="onItemAdd">增加</li>    
-            <li iconCls="icon-edit" onclick="onItemUpdate">修改</li>
-            <li iconCls="icon-remove" onclick="onItemDel">删除</li>                      
+            <li iconCls="fa fa-plus" onclick="onItemAdd">增加</li>    
+            <li iconCls="fa fa-edit" onclick="onItemUpdate">修改</li>
+            <li iconCls="fa fa-remove"  onclick="onItemDel">删除</li>                      
 		</ul>
 
 	    <script type="text/javascript">
@@ -70,6 +70,11 @@
 	                targetWindow: window,
 	                url: "${ctx}/depart/add.do",
 	                title: "新增部门", width: 500, height: 350,
+	                onload: function () {
+                        var iframe = this.getIFrameEl();
+                        $(iframe).contents().find("#form-depart").removeClass("top_margin_ten");
+                        $(iframe).contents().find("#form-depart").addClass("top_margin_two");
+                    },
 	                ondestroy: function (action) {
 	                    grid.reload();
 	                }
@@ -81,7 +86,7 @@
 	           if (row) {
 	            mini.open({
 	                url: "${ctx}/depart/update.do",
-	                title: "编辑员工", width: 700, height: 400,
+	                title: "编辑员工", width: 500, height: 350,
 	                onload: function () {
                         var iframe = this.getIFrameEl();
                         var data = { action: "edit", departId: row.departId };

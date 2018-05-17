@@ -47,9 +47,9 @@
 	    </div>
 	    
 	    <ul id="gridMenu" name="gridMenu" class="mini-menu" style="display:none;" onbeforeopen="onBeforeOpen">
-            <li iconCls="icon-add" onclick="onItemAdd">增加</li>    
-            <li iconCls="icon-edit" onclick="onItemUpdate">修改</li>
-            <li iconCls="icon-remove" onclick="onItemDel">删除</li>                      
+            <li iconCls="fa fa-plus" onclick="onItemAdd">增加</li>    
+            <li iconCls="fa fa-edit" onclick="onItemUpdate">修改</li>
+            <li iconCls="fa fa-remove" onclick="onItemDel">删除</li>                      
 		</ul>
 
 	    <script type="text/javascript">
@@ -77,7 +77,7 @@
 	           if (row) {
 	            mini.open({
 	                url: "${ctx}/job/update.do",
-	                title: "编辑员工", width: 700, height: 400,
+	                title: "编辑员工", width: 700, height: 300,
 	                onload: function () {
 	                    var iframe = this.getIFrameEl();
 	                    var data = { action: "edit", jobId: row.jobId };

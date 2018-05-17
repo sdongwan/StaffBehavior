@@ -12,12 +12,34 @@
 			    	height:100%;
 			    	margin:0;
 			    	overflow:hidden;
-			    }
+		    }
+		    
+		     .mini-button{
+		    	color:#ffffff;
+		    	background-color:#3498DB;
+		    	border-color:#3498DB;
+		    	margin-left:10px;
+		    }
+		    
+		    .mini-button:active,.mini-button:hover{
+		    	color:#3498DB;
+		    	background-color:#ffffff;
+		    	border-color:#ffffff;
+		    }
+		    
+		    #form1{
+		    	margin-left:auto;
+		    	margin-right:auto;
+		    	padding-top:10%;
+		    }
+		    table tr{
+		    	margin-top:25px;
+		    }
 		</style>
 	</head>
 	<body>
-		<div id="form1">
-			<table>
+		<div>
+			<table id="form1">
 			 	<tr>
 	                <td>
 	                    <label for="account">请输入账号：</label>
@@ -47,16 +69,19 @@
 	            </tr> 
 	            <tr>
 	            	<td>
-		            	<div class="mini-button" onclick="changePasswd">确定</div>
+		            	<div class="mini-button" iconCls="fa fa-check" onclick="changePasswd">确定</div>
+		            </td>
+		            <td>
+		            	<div class="mini-button" iconCls="fa fa-remove" onclick="onCancel">重置</div>
 		            </td>
 	            </tr>           
 	        </table>
 	    </div>
 		<script type="text/javascript">
 			mini.parse();
+			var form = new mini.Form("#form1");
+			
 			function changePasswd () {
-			    var form = new mini.Form("#form1");
-
 	            form.validate();
 	            if (form.isValid() == false) return;
 
@@ -84,6 +109,10 @@
 			function onNoEmptyValidation (e) {
 				updateError(e);
 			}
+			
+			function onCancel() {
+	        	form.clear();
+	        }
 		</script>
 	</body>
 </html>

@@ -12,10 +12,23 @@
 			    	height:100%;
 			    	margin:0;
 			    	overflow:hidden;
-			    }
+		    }
+		    
 			div {
 				text-align:center;
-			}    
+			}  
+			
+			 .mini-button{
+		    	color:#ffffff;
+		    	background-color:#3498DB;
+		    	border-color:#3498DB;
+		    }
+		    
+		    .mini-button:active,.mini-button:hover{
+		    	color:#3498DB;
+		    	background-color:#ffffff;
+		    	border-color:#ffffff;
+		    }  
 			
 		</style>
 		<script type="text/javascript">
@@ -45,8 +58,8 @@
 	            </tr>    
            </table>
            <div style="text-align:center;padding:10px;">               
-	            <a class="mini-button" onclick="onOk" style="width:60px;margin-right:20px;">确定</a>       
-	            <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       
+	            <a class="mini-button" onclick="onOk" iconCls="fa fa-check" style="width:70px;margin-right:20px;">确定</a>       
+	            <a class="mini-button" onclick="onCancel" iconCls="fa fa-remove" style="width:70px;">取消</a>       
 	        </div>  
 	    <script type="text/javascript">
 	        mini.parse();

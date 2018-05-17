@@ -12,7 +12,19 @@
 			    	height:100%;
 			    	margin:0;
 			    	overflow:hidden;
-			    }
+		    }
+		    
+		     .mini-button{
+		    	color:#ffffff;
+		    	background-color:#3498DB;
+		    	border-color:#3498DB;
+		    }
+		    
+		    .mini-button:active,.mini-button:hover{
+		    	color:#3498DB;
+		    	background-color:#ffffff;
+		    	border-color:#ffffff;
+		    }
 		</style>
 		<script type="text/javascript">
 			
@@ -26,7 +38,7 @@
 	                <tr>
 	                    <td style="white-space:nowrap;">
 	                        <input id="key" class="mini-textbox" emptyText="请输入姓名" style="width:150px;" onenter="onKeyEnter"/>   
-	                        <a class="mini-button" onclick="search()">查询</a>
+	                        <a class="mini-button" iconCls="fa fa-search" onclick="search()">查询</a>
 	                    </td>
 	                </tr>
 	            </table>           
@@ -45,9 +57,9 @@
 	    </div>
 	    
 	    <ul id="gridMenu" name="gridMenu" class="mini-menu" style="display:none;" onbeforeopen="onBeforeOpen">
-            <li iconCls="icon-add" onclick="onItemAdd">增加</li>    
-            <li iconCls="icon-edit" onclick="onItemUpdate">修改</li>
-            <li iconCls="icon-remove" onclick="onItemDel">删除</li>                      
+            <li iconCls="fa fa-plus" onclick="onItemAdd">增加</li>    
+            <li iconCls="fa fa-edit" onclick="onItemUpdate">修改</li>
+            <li iconCls="fa fa-remove" onclick="onItemDel">删除</li>                      
 		</ul>
 
 	    <script type="text/javascript">

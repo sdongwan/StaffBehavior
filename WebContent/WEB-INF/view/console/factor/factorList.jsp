@@ -12,11 +12,15 @@
 			    	height:100%;
 			    	margin:0;
 			    	overflow:hidden;
-			    }
+		    }
+		    
 			div {
 				text-align:center;
 			}    
 			
+			a.mini-button{
+				color:#3498DB;
+			}
 		</style>
 		<script type="text/javascript">
 		
@@ -28,14 +32,14 @@
 	        <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
 	            <table style="width:100%;">
 	                <tr>
-	                    <td style="width:100%;">
-	                        <a class="mini-button" iconCls="icon-add" onclick="add()">增加</a>
-	                        <a class="mini-button" iconCls="icon-add" onclick="edit()">编辑</a>
-	                        <a class="mini-button" iconCls="icon-remove" onclick="remove()">删除</a>       
-	                    </td>
-	                    <td style="white-space:nowrap;">
+	                 	<td style="float:left;">
 	                        <input id="key" class="mini-textbox" emptyText="请输入姓名" style="width:150px;" onenter="onKeyEnter"/>   
 	                        <a class="mini-button" onclick="search()">查询</a>
+	                    </td>
+	                    <td style="float:right;">
+	                        <a class="mini-button" iconCls="fa fa-plus"  onclick="add()">增加</a>
+	                        <a class="mini-button" iconCls="fa fa-edit" onclick="edit()">编辑</a>
+	                        <a class="mini-button" iconCls="fa fa-remove" onclick="remove()">删除</a>       
 	                    </td>
 	                </tr>
 	            </table>           

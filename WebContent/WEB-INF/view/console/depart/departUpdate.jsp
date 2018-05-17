@@ -13,6 +13,24 @@
 			    	margin:0;
 			    	overflow:hidden;
 			    }
+			    
+	      	#form-depart{
+	      		margin-top:2%;
+		    	margin-left:auto;
+		    	margin-right:auto;
+		    }
+		    
+	       .mini-button{
+		    	color:#ffffff;
+		    	background-color:#3498DB;
+		    	border-color:#3498DB;
+		    }
+		    
+		    .mini-button:active,.mini-button:hover{
+		    	color:#3498DB;
+		    	background-color:#ffffff;
+		    	border-color:#ffffff;
+		    }
 		</style>
 		<script type="text/javascript">
 		
@@ -21,27 +39,25 @@
 	</head>
 	<body>
 		 <table style="table-layout:fixed;" id="form-depart">
-               <tr>
-                   <td style="width:80px;" >部门编号：</td>
-                   <td style="width:150px;">    
-                       <input name="departId" allowInput="false" class="mini-textbox" required="true"/>
-                   </td>
-                   <td style="width:80px;">部门名称：</td>
-                   <td style="width:150px;">    
-                        <input name="departName" class="mini-textbox" required="true"  emptyText="请填写部门名称"/>
+               <tr id="form-depart">
+                   <td>    
+                       	部门编号：<input name="departId" allowInput="false" class="mini-textbox" required="true"/>
                    </td>
                </tr>
-              
                <tr>
-               		<td >备注：</td>
-	                <td colspan="3">    
-	                    <input name="remark" class="mini-textarea" style="width:386px;" />
+                   <td>    
+                       	部门名称：<input name="departName" class="mini-textbox" required="true"  emptyText="请填写部门名称"/>
+                   </td>
+               </tr>
+               <tr>
+	                <td colspan="2">    
+                    	备注：<input name="remark" class="mini-textarea" style="width:386px;height:100px;" />
 	                </td>
 	            </tr>    
            </table>
            <div style="text-align:center;padding:10px;">               
-	            <a class="mini-button" onclick="onUpdateDepart" style="width:60px;margin-right:20px;">确定</a>       
-	            <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       
+	            <a class="mini-button" iconCls="fa fa-check" onclick="onUpdateDepart" style="width:70px;margin-right:20px;">确定</a>       
+	            <a class="mini-button" iconCls="fa fa-remove" onclick="onCancel" style="width:70px;">取消</a>       
 	        </div>  
 	        <script type="text/javascript">
 		   		mini.parse();
