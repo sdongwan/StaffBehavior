@@ -58,9 +58,9 @@
 	            <div field="password" width="120" headerAlign="center" allowSort="true">员工密码</div>    
 	            <div header="工作信息">
 	                <div property="columns">
-	                	<div field="companyId" width="120">所在公司</div>
-	                    <div field="departId" width="120">所属部门</div>
-	                    <div field="jobId" width="100">职位</div>
+	                	<div field="company.companyName" width="120">所在公司</div>
+	                    <div field="depart.departName" width="120">所属部门</div>
+	                    <div field="job.jobName" width="100">职位</div>
 	                    <div field="enterTime" width="100">入职时间</div>
 	                    <div field="workYear" width="100">工作年限</div>
 	                    <div field="salary" dataType="currency" currencyUnit="￥" align="right" width="100" allowSort="true">薪资</div>
@@ -68,14 +68,14 @@
 	            </div>
 	            <div header="基本信息">
 	                <div property="columns">
-	                    <div field="gender" width="100" >性别</div>
+	                    <div field="gender" width="100" renderer="onGenderRenderer">性别</div>
 	                    <div field="birthday" width="100" >出生日期</div>
 	                    <div field="married" width="100" align="center" renderer="onMarriedRenderer">婚否</div>
 	                </div>
 	            </div>
 	            <div header="学历信息" align="center">
 	                <div property="columns">
-	                    <div field="education" width="100">学历</div>
+	                    <div field="education" width="100" >学历</div>
 	                    <div field="graduateSchool" width="120">毕业院校</div>
 	                </div>
 	            </div>     
@@ -158,6 +158,19 @@
             search();
         }
         
+        function onMarriedRenderer(e) {
+            if (e.value == 1) return "已婚";
+            else return "未婚";
+        }
+
+        var Genders = [{ id: 0, text: '男' }, { id: 1, text: '女'}];        
+        function onGenderRenderer(e) {
+            for (var i = 0, l = Genders.length; i < l; i++) {
+                var g = Genders[i];
+                if (g.id == e.value) return g.text;
+            }
+            return "";
+        }
     </script>
 	</body>
 </html>

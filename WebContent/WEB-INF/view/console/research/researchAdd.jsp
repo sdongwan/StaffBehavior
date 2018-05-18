@@ -92,6 +92,15 @@
 	   			})
 	   		}
 	        
+	   		
+	   	    function CloseWindow(action) {            
+	            if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+	            else window.close();            
+	        }
+	   	  
+	   	    function onCancel(){
+	   			CloseWindow("close");
+	   		}
     	</script>
 	</body>
 </html>

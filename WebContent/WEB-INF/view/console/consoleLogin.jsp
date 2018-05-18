@@ -117,6 +117,7 @@
 		    .mini-required .mini-textbox-border{
 		    	background-color:#ffffff;
 		    }
+		    
 		</style>
 		<script type="text/javascript">
 		

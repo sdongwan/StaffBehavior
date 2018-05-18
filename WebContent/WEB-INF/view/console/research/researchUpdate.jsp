@@ -30,6 +30,11 @@
 		    	border-color:#ffffff;
 		    }  
 			
+			#research-form{
+		    	margin-left:auto;
+		    	margin-right:auto;
+		    	margin-top:10%;
+		    }
 		</style>
 		<script type="text/javascript">
 		
@@ -37,7 +42,7 @@
 		</script>
 	</head>
 	<body>
-		<table style="table-layout:fixed;" id="research-form">
+		<table id="research-form">
                <tr>
                    <td style="width:80px;">问卷题目：</td>
                    <td style="width:150px;">    

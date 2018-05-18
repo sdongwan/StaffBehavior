@@ -20,13 +20,15 @@
 			(
 				factor_name,
 				remark,
-				create_time
+				create_time,
+				factor_ratio
 			) 
 			values 
 			(
 				#{factorName,jdbcType=VARCHAR},
 				#{remark,jdbcType=VARCHAR},
-				#{createTime,jdbcType=VARCHAR}
+				date_format(now(),'%Y-%m-%d'),
+				#{factor_ratio,jdbcType=VARCHAR}
 			)
 	</insert>
 	

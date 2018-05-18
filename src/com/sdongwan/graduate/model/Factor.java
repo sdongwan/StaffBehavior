@@ -12,6 +12,7 @@ public class Factor {
 	private String remark;
 	private String createTime;
 	private String updateTime;
+	private String factorRatio;
 
 	/**
 	 * 因素编号
@@ -67,4 +68,11 @@ public class Factor {
 		this.updateTime = updateTime;
 	}
 
+	public String getFactorRatio() {
+		return factorRatio;
+	}
+
+	public void setFactorRatio(String factorRatio) {
+		this.factorRatio = factorRatio;
+	}
 }

@@ -90,7 +90,6 @@
 	            textField="text" idField="id" parentField="pid" >
 		    </ul>
         </div>
-    	
 	   
 	    <div class="mini-fit" style="padding-top:5px;position:relative;">
 	        <!--Tabs-->

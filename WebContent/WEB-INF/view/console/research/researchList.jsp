@@ -45,12 +45,12 @@
 	        </div>
    		</div>
 	    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:90%;" allowResize="true"
-	        url="${ctx}/research/listResearch.do" contextMenu="#gridMenu" idField="id" multiSelect="true">
+	        url="${ctx}/research/listResearch.do" contextMenu="#gridMenu" idField="researchId" multiSelect="true">
 	        <div property="columns">
 	            <div field="researchId" width="120" headerAlign="center" allowSort="true">问卷题目标号</div>    
 	            <div field="question" width="120" headerAlign="center" allowSort="true">调查问题</div>    
-                <div field="factorId" width="100">因素分类</div>
-                <div field="validFlag" width="100">是否在用</div>
+                <div field="factor.factorName" width="100">因素分类</div>
+                <div field="validFlag" width="100" renderer="validRenderer">是否有效</div>
                 <div field="createTime" width="120">创建时间</div>
                 <div field="updateTime" width="100">修改时间</div>
 	        </div>
@@ -142,6 +142,11 @@
     	        e.htmlEvent.preventDefault();
     	        return;
 	    	}
+	      
+	      function validRenderer(e) {
+	    	  if (e.value == 1) return "有效";
+	            else return "失效";
+	      }
 	    </script>
 	</body>
 </html>

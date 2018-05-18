@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-05-06 23:39:30
+Date: 2018-05-19 00:30:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,7 +54,7 @@ CREATE TABLE `t_depart` (
 -- Records of t_depart
 -- ----------------------------
 INSERT INTO `t_depart` VALUES ('1', '00001', '研发二部', '10', '2018-04-21', '', '');
-INSERT INTO `t_depart` VALUES ('10', '00001', '市场', '0', '2018-05-01', '', '');
+INSERT INTO `t_depart` VALUES ('9', '00001', '市场', '0', '2018-05-01', '', '');
 INSERT INTO `t_depart` VALUES ('11', '00001', '测试', '0', '2018-05-01', '2018-05-01', '随风倒十分');
 INSERT INTO `t_depart` VALUES ('12', '00001', '测试', '0', '2018-05-01', '2018-05-01', '地方大师傅');
 INSERT INTO `t_depart` VALUES ('13', '00001', '13', '1', '2018-05-01', '', '0');
@@ -80,14 +80,15 @@ CREATE TABLE `t_factor` (
   `create_time` varchar(20) DEFAULT NULL COMMENT '创建时间',
   `update_time` varchar(20) DEFAULT '' COMMENT '修改日期',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
+  `factor_ratio` varchar(5) DEFAULT '' COMMENT '因素比列',
   PRIMARY KEY (`factor_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_factor
 -- ----------------------------
-INSERT INTO `t_factor` VALUES ('1', '环境氛围', '2018-04-30', '', '');
-INSERT INTO `t_factor` VALUES ('2', '环境氛围', '2018-04-30', '', 'fdsf');
+INSERT INTO `t_factor` VALUES ('1', '环境氛围', '2018-04-30', '', '', '');
+INSERT INTO `t_factor` VALUES ('2', '环境氛围', '2018-04-30', '', 'fdsf', '');
 
 -- ----------------------------
 -- Table structure for `t_job`
@@ -143,7 +144,7 @@ CREATE TABLE `t_research_result` (
   `research_reply` varchar(255) NOT NULL DEFAULT '' COMMENT '問卷回答保存',
   `create_time` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`result_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_research_result
@@ -169,6 +170,10 @@ INSERT INTO `t_research_result` VALUES ('18', '1', '1', '2', '2018-05-06');
 INSERT INTO `t_research_result` VALUES ('19', '3', '1', '2', '2018-05-06');
 INSERT INTO `t_research_result` VALUES ('20', '4', '1', '1', '2018-05-06');
 INSERT INTO `t_research_result` VALUES ('21', '5', '1', '3', '2018-05-06');
+INSERT INTO `t_research_result` VALUES ('22', '1', '1', '', '2018-05-18');
+INSERT INTO `t_research_result` VALUES ('23', '3', '1', '', '2018-05-18');
+INSERT INTO `t_research_result` VALUES ('24', '4', '1', '', '2018-05-18');
+INSERT INTO `t_research_result` VALUES ('25', '5', '1', '', '2018-05-18');
 
 -- ----------------------------
 -- Table structure for `t_staff`

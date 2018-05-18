@@ -26,6 +26,10 @@ public class Staff {
 	private String updateTime;
 	private String hometown;
 	
+	private Job job;
+	private Company company;
+	private Depart depart;
+	
 	/**
 	 * 员工编号
 	 * @return
@@ -255,5 +259,29 @@ public class Staff {
 	public void setHometown(String hometown) {
 		this.hometown = hometown;
 	}
+
 	
+	public Job getJob() {
+		return job;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	public Depart getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Depart depart) {
+		this.depart = depart;
+	}
 }

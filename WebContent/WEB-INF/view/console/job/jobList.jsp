@@ -39,7 +39,7 @@
 	        <div property="columns">
 	            <div field="jobId" width="120" headerAlign="center" allowSort="true">职位编号</div>    
 	            <div field="jobName" width="120" headerAlign="center" allowSort="true">职位名称</div>    
-	            <div field="departId" width="120" headerAlign="center" allowSort="true">部门编号</div>  
+	            <div field="depart.departName" width="120" headerAlign="center" allowSort="true">部门编号</div>  
                 <div field="createTime" width="100">创建时间</div>
                 <div field="updateTime" width="100">修改时间</div>
                 <div field="remark"  width="200">备注</div>

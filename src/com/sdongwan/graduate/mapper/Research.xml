@@ -4,6 +4,9 @@
 
 	<resultMap id="BaseResultMap" type="com.sdongwan.graduate.model.Research"
 		autoMapping="true">
+		<association property="factor" javaType="com.sdongwan.graduate.model.Factor">
+			<result property="factorName" column="factor_name"/>
+		</association>
 	</resultMap>
 	
 	<insert id="add" parameterType="com.sdongwan.graduate.model.Research">
@@ -29,7 +32,16 @@
 	</select>
 	
 	<select id="getAll" resultMap="BaseResultMap">
-		select * from t_research 	
+		SELECT
+			t_research.research_id,
+			t_research.question,
+			t_research.create_time,
+			t_research.update_time,
+			t_research.factor_id,
+			t_research.valid_flag,
+			t_factor.factor_name
+			FROM
+			t_research LEFT JOIN t_factor on t_research.factor_id = t_factor.factor_id
 	</select>
 	
 	<delete id="delById" parameterType="int">

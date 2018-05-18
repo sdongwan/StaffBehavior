@@ -55,6 +55,12 @@
 	               </td>
                </tr>
                <tr>
+               	   <td>评估占比：</td>
+	               <td>    
+	               		<input name="factorRatio" class="mini-textbox" required="true"/>
+	               </td>
+               </tr>
+               <tr>
                		<td >备注：</td>
 	                <td colspan="3">    
 	                    <input name="remark" class="mini-textarea" style="width:386px;" />
@@ -84,6 +90,16 @@
 	   					mini.alert("添加失败");
 	   				}
 	   			})
+	   		}
+	   		
+	   		
+	   	   function CloseWindow(action) {            
+	            if (window.CloseOwnerWindow) return window.CloseOwnerWindow(action);
+	            else window.close();            
+	        }
+	   	  
+	   		function onCancel(){
+	   			CloseWindow("close");
 	   		}
    		</script>
 	</body>

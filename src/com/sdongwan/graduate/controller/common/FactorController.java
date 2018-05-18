@@ -51,11 +51,13 @@ public class FactorController {
 		String factorName = RequestUtil.getString(request, "factorName");
 		String createTime = RequestUtil.getString(request, "createTime");
 		String remark = RequestUtil.getString(request, "remark");
+		String factorRatio = RequestUtil.getString(request, "factorRatio");
 		
 		Factor factor = new Factor();
 		factor.setFactorName(factorName);
 		factor.setRemark(remark);
 		factor.setCreateTime(createTime);
+		factor.setFactorRatio(factorRatio);
 		
 		try {
 			return factorService.insert(factor);

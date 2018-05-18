@@ -13,6 +13,8 @@ public class Job {
 	private String updateTime;
 	private String remark;
 	
+	private Depart depart;
+	
 	/**
 	 * 职位编号
 	 * @return
@@ -75,5 +77,13 @@ public class Job {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public Depart getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Depart depart) {
+		this.depart = depart;
 	}
 }

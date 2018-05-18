@@ -4,10 +4,47 @@
 
 	<resultMap id="BaseResultMap" type="com.sdongwan.graduate.model.Staff"
 		autoMapping="true">
+		<association property="company" javaType="com.sdongwan.graduate.model.Company">
+			<result property="companyName" column="company_name"/>
+		</association>
+		
+		<association property="depart" javaType="com.sdongwan.graduate.model.Depart">
+			<result property="departName" column="depart_name"/>
+		</association>
+		
+		<association property="job" javaType="com.sdongwan.graduate.model.Job">
+			<result property="jobName" column="job_name"/>
+		</association>
 	</resultMap>
 	
 	<select id="getAll" resultMap="BaseResultMap">
-		select * from t_staff
+		SELECT
+			st.company_id,
+			st.job_id,
+			st.work_year,
+			st.enter_time,
+			st.staff_name,
+			st.password,
+			st.account,
+			st.gender,
+			st.salary,
+			st.education,
+			st.graduate_school,
+			st.married,
+			st.birthday,
+			st.remark,
+			st.create_time,
+			st.update_time,
+			st.hometown,
+			st.depart_id,
+			t_company.company_name,
+			t_depart.depart_name,
+			t_job.job_name
+			FROM
+			t_staff AS st
+			LEFT JOIN t_company ON st.company_id= t_company.company_id 
+			LEFT JOIN t_depart on st.depart_id = t_depart.depart_id
+			LEFT JOIN t_job on st.job_id = t_job.job_id
 	</select>
 	
 	<select id="getCount" resultType="int">

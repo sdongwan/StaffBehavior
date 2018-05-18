@@ -75,19 +75,17 @@
 	                <td >    
 	                    <input name="hometown" class="mini-textbox"  />
 	                </td>
-	                
+	                <td >学历：</td>
+                    <td >    
+                        <input name="education" class="mini-combobox" valueField="id" textField="text" data="[{id:'0',text:'小学'},{id:'1',text:'初中'},{id:'2',text:'高中'},{id:'3',text:'大学'}]"/>
+                    </td>
 	            </tr>
 	            
 	            <tr>
-                    <td >学历：</td>
-                    <td >    
-                        <input name="education" class="mini-combobox" valueField="id" textField="name" url="" />
-                    </td>
                     <td >毕业院校：</td>
                     <td >    
                         <input name="graduateSchool" class="mini-textbox" />
                     </td>
-	            
 	            <tr>
 	                
 	            </tr>
@@ -152,8 +150,8 @@
 	            </div>
 	        </fieldset>
 	        <div style="text-align:center;padding:10px;">               
-	            <a class="mini-button" onclick="onOk" style="width:60px;margin-right:20px;">确定</a>       
-	            <a class="mini-button" onclick="onCancel" style="width:60px;">取消</a>       
+	            <a class="mini-button" onclick="onOk" iconCls="fa fa-check" style="width:70px;margin-right:20px;">确定</a>       
+	            <a class="mini-button" onclick="onCancel" iconCls="fa fa-remove" style="width:70px;">取消</a>       
 	        </div>        
 	    </form>
 	    <script type="text/javascript">

@@ -4,10 +4,21 @@
 
 	<resultMap id="BaseResultMap" type="com.sdongwan.graduate.model.Job"
 		autoMapping="true">
+		<association property="depart" javaType="com.sdongwan.graduate.model.Depart">
+			<result property="departName" column="depart_name"/>
+		</association>
 	</resultMap>
 
 	<select id="getAll" resultMap="BaseResultMap">
-		select * from t_job	
+		SELECT
+			t_job.remark,
+			t_job.update_time,
+			t_job.create_time,
+			t_job.job_name,
+			t_job.job_id,
+			t_depart.depart_name
+			FROM
+			t_job LEFT JOIN t_depart on t_job.depart_id = t_depart.depart_id
 	</select>
 	
 	<select id="findById" parameterType="int" resultMap="BaseResultMap">
