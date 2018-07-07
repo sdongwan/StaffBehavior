@@ -21,7 +21,4 @@ public class CompanyService extends BaseService{
 	public IEntityDao getIEntityDao() {
 		return companyDao;
 	}
-
-	
-
 }

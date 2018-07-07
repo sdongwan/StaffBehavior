@@ -238,19 +238,19 @@ public class TreeController {
 		JSONObject jsonObject5 =new JSONObject();
 		try {
 			jsonObject1.put("id", "1");
-			jsonObject1.put("text", "非常不同意");
+			jsonObject1.put("text", "非常不满意");
 			
 			jsonObject2.put("id", "2");
-			jsonObject2.put("text", "比较不同意");
+			jsonObject2.put("text", "比较不满意");
 			
 			jsonObject3.put("id", "3");
 			jsonObject3.put("text", "一般");
 			
 			jsonObject4.put("id", "4");
-			jsonObject4.put("text", "比较同意");
+			jsonObject4.put("text", "比较满意");
 
 			jsonObject5.put("id", "5");
-			jsonObject5.put("text","非常同意");
+			jsonObject5.put("text","非常满意");
 			
 		} catch (JSONException e) {
 			e.printStackTrace();

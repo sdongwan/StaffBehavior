@@ -59,6 +59,10 @@
 		select * from t_staff limit #{begin,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
 	</select>
 	
+	<select id="getStaffByJobId" parameterType="int" resultMap="BaseResultMap">
+		select staff_name,staff_id from t_staff where job_id = #{jobId,jdbcType=INTEGER} 
+	</select>
+	
 	<insert id="add" parameterType="com.sdongwan.graduate.model.Staff">
 		insert into t_staff 
 			(

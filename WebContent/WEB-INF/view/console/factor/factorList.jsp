@@ -51,7 +51,7 @@
 	            <div field="factorId" width="120" headerAlign="center" allowSort="true">因素编号</div>    
 	            <div field="factorName" width="120" headerAlign="center" allowSort="true">因素名称</div>    
                 <div field="remark" width="120">备注</div>
-                <div field="factorRadio" width="120">评估占比</div>
+                <div field="factorRatio" width="120">评估占比</div>
                 <div field="createTime" width="100">创建时间</div>
                 <div field="updateTime" width="100">修改时间</div>
 	        </div>

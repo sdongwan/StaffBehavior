@@ -37,7 +37,7 @@
 	            <table style="width:100%;">
 	                <tr>
 	                    <td style="white-space:nowrap;">
-	                        <input id="key" class="mini-textbox" emptyText="请输入姓名" style="width:150px;" onenter="onKeyEnter"/>   
+	                        <input id="key" class="mini-textbox" emptyText="请输入问卷标号" style="width:150px;" onenter="onKeyEnter"/>   
 	                        <a class="mini-button" iconCls="fa fa-search" onclick="search()">查询</a>
 	                    </td>
 	                </tr>

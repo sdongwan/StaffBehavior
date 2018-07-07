@@ -47,4 +47,12 @@ public class ResearchResultController {
 			return e.getMessage();
 		}
 	}
+	
+	@RequestMapping({ "getResultByStaffId" })
+	@ResponseBody
+	public Object getResultByStaffId(HttpServletRequest request) {
+		int staffId = RequestUtil.getInt(request, "staffId");
+		return researchResultService.getList("getResultByStaffId", staffId);
+	}
+	
 }

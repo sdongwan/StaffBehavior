@@ -32,5 +32,8 @@
 		select * from t_research_result 	
 	</select>
 	
+	<select id="getResultByStaffId" resultMap="BaseResultMap" parameterType="int">
+		select * from t_research_result where staff_id = #{staffId,jdbcType=INTEGER}
+	</select>
 	
 </mapper>

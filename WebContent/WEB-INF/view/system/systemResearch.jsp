@@ -48,6 +48,7 @@
 		        margin-right: auto;
 		        margin-left: auto;
 			    max-width: 900px;
+			    height:600px;
 			    padding: 40px;
 			    background-color: #ffffff;
 			    margin-left: auto;
@@ -102,7 +103,7 @@
 		 			</c:forEach>
 		 			<input class="mini-hidden" name="staffId"  value="${staff.staffId}" />	     	
 				</form>
-				<div style="width:100%;text-align:center;">
+				<div style="width:100%;text-align:center;display:absolute;bottom:20px;">
 					<a class="mini-button" onclick="onOk" id="submit-resear">提交问卷调查</a>       
 				</div>
 			</div>

@@ -46,6 +46,13 @@ public class StaffController {
 	}
 	
 	@ResponseBody
+	@RequestMapping({ "getStaffByJobId" })
+	public Object getStaffByJobId(HttpServletRequest request) {
+		int jobId = RequestUtil.getInt(request, "jobId");
+		return staffService.getList("getStaffByJobId", jobId);
+	}
+
+	@ResponseBody
 	@RequestMapping( {"getStaffById"} )
 	public Object getStaffById (HttpServletRequest request) {
 		int departId = RequestUtil.getInt(request, "staffId");
